@@ -1,0 +1,35 @@
+{
+    "name": "rpggenerator/railbaron",
+    "description": "RPGGenerator Rail Baron Payout Tracker",
+    "keywords": ["RailBaron", "payout", "RPGGenerator"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Austin Haws",
+            "email": "austinhaws@gmail.com"
+        }
+    ],
+    "require": {
+        "webonyx/graphql-php": "^0.13.8",
+		"ext-json": "*",
+        "adodb/adodb-php": "^5.20"
+	},
+	"autoload": {
+		"psr-4": {
+            "RailBaron\\": "src/"
+        }
+	},
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
