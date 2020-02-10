@@ -2,7 +2,7 @@
 
 namespace RailBaron\Service;
 
-class ArrayService
+class ArrayService extends BaseService
 {
 
 	public function find(array $a, callable $f)

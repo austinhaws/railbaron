@@ -6,17 +6,17 @@ class CityDao extends BaseDao
 
 	public function selectCities()
 	{
-	    return $this->execute(
+	    return $this->executeCached(
 			"CityDAO::selectCities",
 			'SELECT * FROM city'
-		)->GetArray();
+		);
 	}
 
 	public function selectCitiesByRegionId($region_id)
 	{
 		return $this->testResult(
 			"CityDAO::selectCities failed",
-			$this->dbConnection->execute('SELECT * FROM city WHERE region_id = ?', $region_id)
+			$this->executeCached('SELECT * FROM city WHERE region_id = ?', $region_id)
 		);
 	}
 
@@ -24,7 +24,7 @@ class CityDao extends BaseDao
 	{
 		return $this->testResult(
 			"CityDAO::selectCities failed",
-			$this->dbConnection->execute("
+			$this->executeCached("
 				SELECT *
 				FROM city
 				WHERE region_id IN ({$this->createQuestionMarks(count($region_ids))})

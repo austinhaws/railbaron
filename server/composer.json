@@ -11,10 +11,11 @@
         }
     ],
     "require": {
-        "webonyx/graphql-php": "^0.13.8",
-		"ext-json": "*",
-        "adodb/adodb-php": "^5.20"
-	},
+        "ext-json": "*",
+        "adodb/adodb-php": "^5.20",
+        "phpfastcache/phpfastcache": "^7.1",
+        "webonyx/graphql-php": "^0.13.8"
+    },
 	"autoload": {
 		"psr-4": {
             "RailBaron\\": "src/"

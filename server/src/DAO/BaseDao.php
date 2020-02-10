@@ -21,7 +21,11 @@ class BaseDao {
 		return trim(str_repeat('?, ', $count), ', ');
 	}
 
+	protected function executeCached($location, $query, ...$params) {
+	    return $this->testResult($location, $this->context->dbConnection->db->cacheGetAssoc($query, ...$params));
+	}
+
 	protected function execute($location, $query, ...$params) {
-		return $this->testResult($location, $this->context->dbConnection->db->execute($query, $params));
+        return $this->testResult($location, $this->context->dbConnection->db->execute($query, ...$params));
 	}
 }
