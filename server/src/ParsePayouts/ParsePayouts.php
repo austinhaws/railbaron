@@ -8,7 +8,7 @@ class ParsePayouts {
     private $context;
 
 	public function run() {
-        $this->context = new Context();
+        $this->context = Context::instance();
 
 		$row = 1;
 		ini_set('auto_detect_line_endings',TRUE);

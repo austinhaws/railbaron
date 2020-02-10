@@ -13,8 +13,10 @@ class Context {
     public $dbConnection;
     /** @var Psr16Adapter */
     public $cache;
+    /** @var Context */
+    private static $instance;
 
-    public function __construct()
+    private function __construct()
     {
         $this->dbConnection = new DBConnection();
 
@@ -23,5 +25,12 @@ class Context {
         $this->daos = new Daos($this);
 
         $this->services = new Services($this);
+    }
+
+    public static function instance() {
+        if (!self::$instance) {
+            self::$instance = new Context();
+        }
+        return self::$instance;
     }
 }
