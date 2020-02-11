@@ -4,7 +4,6 @@ namespace RailBaron\GraphQL;
 
 use RailBaron\Context\Context;
 use RailBaron\GraphQL\Type\CityType;
-use RailBaron\GraphQL\Type\NodeType;
 use RailBaron\GraphQL\Type\QueryType;
 use RailBaron\GraphQL\Type\RegionType;
 
@@ -15,8 +14,6 @@ class TypeRegistry
 
     /** @var CityType */
     private $cityType;
-    /** @var NodeType */
-    private $nodeType;
     /** @var QueryType */
     private $queryType;
     /** @var RegionType */
@@ -30,11 +27,6 @@ class TypeRegistry
     public function cityType()
     {
         return $this->cityType ?: ($this->cityType = new CityType($this->context));
-    }
-
-    public function nodeType()
-    {
-        return $this->nodeType ?: ($this->nodeType = new NodeType());
     }
 
     public function queryType()

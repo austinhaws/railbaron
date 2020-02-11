@@ -6,8 +6,10 @@ use GraphQL\Utils\Utils;
 
 class BaseModel
 {
-    public function __construct(array $data)
+    public function __construct($data)
     {
-        Utils::assign($this, $data);
+        if ($data) {
+            Utils::assign($this, $data);
+        }
     }
 }

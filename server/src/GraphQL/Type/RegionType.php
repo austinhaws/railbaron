@@ -23,9 +23,6 @@ class RegionType extends BaseType
                     ],
                 ];
             },
-            'interfaces' => [
-                $context->typeRegistry->nodeType()
-            ],
         ]);
     }
 

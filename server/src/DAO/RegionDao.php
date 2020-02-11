@@ -1,15 +1,25 @@
 <?php
+
 namespace RailBaron\DAO;
 
-class RegionDao extends BaseDao {
+use RailBaron\Context\Context;
+
+class RegionDao extends BaseDao
+{
+
+    public function __construct(Context $context)
+    {
+        parent::__construct($context);
+        $this->defaultClassPath = 'RailBaron\GraphQL\Model\Region';
+    }
 
     public function regions()
     {
-        return $this->getAll('RegionDao->executeCached()', 'SELECT * FROM region');
+        return $this->dbToObj($this->getAll('SELECT * FROM region'));
     }
 
     public function regionForId($id)
     {
-        return $this->getAll('RegionDao->executeCached()', 'SELECT * FROM region WHERE id = ?', [$id]);
+        return $this->dbToObj($this->getAll('SELECT * FROM region WHERE id = ?', [$id]));
     }
 }

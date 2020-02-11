@@ -22,8 +22,6 @@ class Context {
 
     private function __construct()
     {
-        $this->dbConnection = new DBConnection();
-
         $this->cache = new Psr16Adapter('Memstatic');
 
         $this->daos = new Daos($this);
@@ -31,6 +29,8 @@ class Context {
         $this->services = new Services($this);
 
         $this->typeRegistry = new TypeRegistry($this);
+
+        $this->dbConnection = new DBConnection($this);
     }
 
     public static function instance() {

@@ -1,7 +1,7 @@
 composer.phar
 vendor**
-.idea/**
+.idea/
 node_modules**
 dist**
-environments**
+environments/
 .env

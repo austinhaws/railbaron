@@ -6,6 +6,7 @@ class CityDao extends BaseDao
 
 	public function selectCities()
 	{
+exit('clean cities dao!');
 	    return $this->executeCached(
 			"CityDAO::selectCities",
 			'SELECT * FROM city'

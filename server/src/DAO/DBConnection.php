@@ -1,18 +1,27 @@
 <?php
+
 namespace RailBaron\DAO;
 
 use ADOConnection;
-use RailBaron\Config\DBConfig;
+use RailBaron\Context\Context;
 
-class DBConnection {
+class DBConnection
+{
     /** @var ADOConnection */
-	public $db;
+    public $db;
+    /** @var Context */
+    private $context;
 
-	public function __construct()
-	{
-		$this->db = ADONewConnection('mysqli');
-		$options = new DBConfig();
-		$this->db->connect($options->host, $options->username, $options->password, $options->schema) || die('Unable to connect to DB');
+    public function __construct(Context $context)
+    {
+        $this->context = $context;
+        $this->db = ADONewConnection('mysqli');
+        $this->db->connect(
+            $context->services->environmentService->dbHost(),
+            $context->services->environmentService->dbUsername(),
+            $context->services->environmentService->dbPassword(),
+            $context->services->environmentService->dbDatabase()
+        ) || die('Unable to connect to DB');
         $this->db->SetFetchMode(ADODB_FETCH_ASSOC);
-	}
+    }
 }

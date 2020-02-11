@@ -19,22 +19,14 @@ class QueryType extends BaseType
                         'id' => Type::id(),
                     ]
                 ],
-                'city' => [
-                    'type' => $context->typeRegistry->cityType(),
-                    'description' => 'Returns city by id',
-                    'args' => [
-                        'id' => Type::id()
-                    ]
-                ],
             ],
             'resolveField' => function($rootValue, $args, $context, ResolveInfo $info) {
-                return $this->resolveRegions($rootValue, $args, $context, $info);
+                return $this->{$info->fieldName}($rootValue, $args, $context, $info);
             }
-
         ]);
     }
 
-    public function resolveRegions($rootValue, $args, $context, ResolveInfo $info)
+    public function regions($rootValue, $args, $context, ResolveInfo $info)
     {
         $regionIdParam = isset($args['id']) ? $args['id'] : null;
         if ($regionIdParam) {
@@ -42,6 +34,6 @@ class QueryType extends BaseType
         } else {
             $regions = $this->context->daos->regionDao->regions();
         }
-        return $this->mapArrayToObjects('RailBaron\GraphQL\Model\Region', $regions);
+        return $regions;
     }
 }
