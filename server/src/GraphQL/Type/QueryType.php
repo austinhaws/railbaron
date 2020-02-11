@@ -1,4 +1,5 @@
 <?php
+
 namespace RailBaron\GraphQL\Type;
 
 use GraphQL\Type\Definition\ResolveInfo;
@@ -14,25 +15,40 @@ class QueryType extends BaseType
             'fields' => [
                 'regions' => [
                     'type' => Type::listOf($context->typeRegistry->regionType()),
-                    'description' => 'Returns region by id',
+                    'description' => 'Returns region optionally by id',
                     'args' => [
                         'id' => Type::id(),
                     ]
                 ],
+                'cities' => [
+                    'type' => Type::listOf($context->typeRegistry->cityType()),
+                    'description' => 'Returns regions optionally by id',
+                    'args' => [
+                        'id' => Type::id(),
+                    ]
+                ]
             ],
-            'resolveField' => function($rootValue, $args, $context, ResolveInfo $info) {
-                return $this->{$info->fieldName}($rootValue, $args, $context, $info);
-            }
         ]);
     }
 
-    public function regions($rootValue, $args, $context, ResolveInfo $info)
+    public function resolveRegions($rootValue, $args, $context, ResolveInfo $info)
     {
         $regionIdParam = isset($args['id']) ? $args['id'] : null;
         if ($regionIdParam) {
             $regions = $this->context->daos->regionDao->regionForId($regionIdParam);
         } else {
             $regions = $this->context->daos->regionDao->regions();
+        }
+        return $regions;
+    }
+
+    public function resolveCities($rootValue, $args, $context, ResolveInfo $info)
+    {
+        $idParam = isset($args['id']) ? $args['id'] : null;
+        if ($idParam) {
+            $regions = $this->context->daos->cityDao->cityForId($idParam);
+        } else {
+            $regions = $this->context->daos->cityDao->cities();
         }
         return $regions;
     }

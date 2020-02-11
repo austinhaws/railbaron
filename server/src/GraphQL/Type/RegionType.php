@@ -4,6 +4,7 @@ namespace RailBaron\GraphQL\Type;
 
 use GraphQL\Type\Definition\Type;
 use RailBaron\Context\Context;
+use RailBaron\GraphQL\Model\Region;
 
 class RegionType extends BaseType
 {
@@ -26,8 +27,8 @@ class RegionType extends BaseType
         ]);
     }
 
-    public function resolveCities(array $region)
+    public function resolveCities(Region $region)
     {
-        return Context::instance()->services->cityService->getCitiesForRegion($region['id']);
+        return $this->context->daos->cityDao->citiesForRegionId($region->id);
     }
 }

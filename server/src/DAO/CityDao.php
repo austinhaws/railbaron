@@ -1,35 +1,30 @@
 <?php
+
 namespace RailBaron\DAO;
+
+use RailBaron\Context\Context;
 
 class CityDao extends BaseDao
 {
 
-	public function selectCities()
-	{
-exit('clean cities dao!');
-	    return $this->executeCached(
-			"CityDAO::selectCities",
-			'SELECT * FROM city'
-		);
-	}
+    public function __construct(Context $context)
+    {
+        parent::__construct($context);
+        $this->defaultClassPath = 'RailBaron\GraphQL\Model\City';
+    }
 
-	public function selectCitiesByRegionId($region_id)
-	{
-		return $this->testResult(
-			"CityDAO::selectCities failed",
-			$this->executeCached('SELECT * FROM city WHERE region_id = ?', $region_id)
-		);
-	}
+    public function cityForId($id)
+    {
+        return $this->dbToObj($this->getAll('SELECT * FROM city WHERE id = ?', [$id]));
+    }
 
-	public function selectCitiesByRegionIds($region_ids)
-	{
-		return $this->testResult(
-			"CityDAO::selectCities failed",
-			$this->executeCached("
-				SELECT *
-				FROM city
-				WHERE region_id IN ({$this->createQuestionMarks(count($region_ids))})
-			", $region_ids)
-		);
-	}
+    public function cities()
+    {
+        return $this->dbToObj($this->getAll('SELECT * FROM city'));
+    }
+
+    public function citiesForRegionId($regionId)
+    {
+        return $this->dbToObj($this->getAll('SELECT * FROM city WHERE region_id = ?', [$regionId]));
+    }
 }
