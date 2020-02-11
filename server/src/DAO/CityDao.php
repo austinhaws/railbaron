@@ -15,7 +15,7 @@ class CityDao extends BaseDao
 
     public function cityForId($id)
     {
-        return $this->dbArrayToObjects($this->getAll('SELECT * FROM city WHERE id = ?', [$id]));
+        return $this->dbAssocToObject($this->getAll('SELECT * FROM city WHERE id = ?', [$id]));
     }
 
     public function cities()

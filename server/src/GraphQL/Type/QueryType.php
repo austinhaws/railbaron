@@ -54,11 +54,11 @@ class QueryType extends BaseType
     {
         $idParam = $this->getArgFieldValue($args, 'id');
         if ($idParam) {
-            $regions = $this->context->daos->cityDao->cityForId($idParam);
+            $cities = [$this->context->daos->cityDao->cityForId($idParam)];
         } else {
-            $regions = $this->context->daos->cityDao->cities();
+            $cities = $this->context->daos->cityDao->cities();
         }
-        return $regions;
+        return $cities;
     }
 
     public function resolvePayout($rootValue, $args, $context, ResolveInfo $info)
