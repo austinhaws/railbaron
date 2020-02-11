@@ -20,6 +20,6 @@ class RegionDao extends BaseDao
 
     public function regionForId($id)
     {
-        return $this->dbArrayToObjects($this->getAll('SELECT * FROM region WHERE id = ?', [$id]));
+        return $this->dbAssocToObject($this->getAll('SELECT * FROM region WHERE id = ?', [$id])[0]);
     }
 }

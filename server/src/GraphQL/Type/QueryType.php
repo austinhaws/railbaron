@@ -43,7 +43,7 @@ class QueryType extends BaseType
     {
         $regionIdParam = $this->getArgFieldValue($args, 'id');
         if ($regionIdParam) {
-            $regions = $this->context->daos->regionDao->regionForId($regionIdParam);
+            $regions = [$this->context->daos->regionDao->regionForId($regionIdParam)];
         } else {
             $regions = $this->context->daos->regionDao->regions();
         }

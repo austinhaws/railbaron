@@ -17,4 +17,9 @@ class PayoutDao extends BaseDao
     {
         return $this->dbAssocToObject($this->getAll('SELECT * FROM payout WHERE city1_id = ? AND city2_id = ?', [$city1Id, $city2Id]));
     }
+
+    public function payoutsForCityId($cityId)
+    {
+        return $this->dbArrayToObjects($this->getAll('SELECT * FROM payout WHERE city1_id = ? OR city2_id = ?', [$cityId, $cityId]));
+    }
 }
