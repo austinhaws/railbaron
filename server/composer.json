@@ -14,6 +14,7 @@
         "ext-json": "*",
         "adodb/adodb-php": "^5.20",
         "phpfastcache/phpfastcache": "^7.1",
+        "vlucas/phpdotenv": "^4.1",
         "webonyx/graphql-php": "^0.13.8"
     },
 	"autoload": {

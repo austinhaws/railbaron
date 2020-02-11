@@ -13,5 +13,6 @@ class DBConnection {
 		$this->db = ADONewConnection('mysqli');
 		$options = new DBConfig();
 		$this->db->connect($options->host, $options->username, $options->password, $options->schema) || die('Unable to connect to DB');
+        $this->db->SetFetchMode(ADODB_FETCH_ASSOC);
 	}
 }

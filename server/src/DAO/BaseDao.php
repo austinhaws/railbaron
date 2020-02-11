@@ -25,6 +25,10 @@ class BaseDao {
 	    return $this->testResult($location, $this->context->dbConnection->db->cacheGetAssoc($query, ...$params));
 	}
 
+	protected function getAll($location, $query, ...$params) {
+        return $this->testResult($location, $this->context->dbConnection->db->getAll($query, ...$params));
+	}
+
 	protected function execute($location, $query, ...$params) {
         return $this->testResult($location, $this->context->dbConnection->db->execute($query, ...$params));
 	}

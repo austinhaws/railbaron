@@ -3,16 +3,20 @@ namespace RailBaron\Context;
 
 use Phpfastcache\Helper\Psr16Adapter;
 use RailBaron\DAO\DBConnection;
+use RailBaron\GraphQL\TypeRegistry;
 
 class Context {
-    /** @var Daos  */
-    public $daos;
-    /** @var Services  */
-    public $services;
-    /** @var DBConnection  */
-    public $dbConnection;
     /** @var Psr16Adapter */
     public $cache;
+    /** @var Daos  */
+    public $daos;
+    /** @var DBConnection  */
+    public $dbConnection;
+    /** @var Services  */
+    public $services;
+    /** @var TypeRegistry */
+    public $typeRegistry;
+
     /** @var Context */
     private static $instance;
 
@@ -25,6 +29,8 @@ class Context {
         $this->daos = new Daos($this);
 
         $this->services = new Services($this);
+
+        $this->typeRegistry = new TypeRegistry($this);
     }
 
     public static function instance() {
