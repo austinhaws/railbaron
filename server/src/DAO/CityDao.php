@@ -15,16 +15,16 @@ class CityDao extends BaseDao
 
     public function cityForId($id)
     {
-        return $this->dbToObj($this->getAll('SELECT * FROM city WHERE id = ?', [$id]));
+        return $this->dbArrayToObjects($this->getAll('SELECT * FROM city WHERE id = ?', [$id]));
     }
 
     public function cities()
     {
-        return $this->dbToObj($this->getAll('SELECT * FROM city'));
+        return $this->dbArrayToObjects($this->getAll('SELECT * FROM city'));
     }
 
     public function citiesForRegionId($regionId)
     {
-        return $this->dbToObj($this->getAll('SELECT * FROM city WHERE region_id = ?', [$regionId]));
+        return $this->dbArrayToObjects($this->getAll('SELECT * FROM city WHERE region_id = ?', [$regionId]));
     }
 }

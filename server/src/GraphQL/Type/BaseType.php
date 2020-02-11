@@ -24,6 +24,11 @@ class BaseType extends ObjectType
         parent::__construct($config);
     }
 
+    protected function getArgFieldValue($args, $field)
+    {
+        return isset($args[$field]) ? $args[$field] : null;
+    }
+
     protected function resolveField($dbArray, $args, $context, ResolveInfo $info)
     {
         $method = 'resolve' . ucfirst($info->fieldName);

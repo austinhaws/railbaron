@@ -42,8 +42,13 @@ class BaseDao
         return $this->testResult($this->context->dbConnection->db->execute($query, ...$params));
     }
 
-    protected function dbToObj($dbArray, $classPath = null)
+    protected function dbArrayToObjects($dbArray, $classPath = null)
     {
         return $this->context->services->arrayService->mapArrayToObjects($classPath ?: $this->defaultClassPath, $dbArray);
+    }
+
+    protected function dbAssocToObject($dbAssoc, $classPath = null)
+    {
+        return count($dbAssoc) ? $this->context->services->arrayService->mapArrayToObjects($classPath ?: $this->defaultClassPath, [$dbAssoc])[0] : null;
     }
 }
