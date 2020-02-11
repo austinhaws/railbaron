@@ -31,8 +31,8 @@ class QueryType extends BaseType
                     'type' => $context->typeRegistry->payoutType(),
                     'description' => 'Calculates payout between two cities',
                     'args' => [
-                        'city1Id' => Type::id(),
-                        'city2Id' => Type::id(),
+                        'city1Id' => Type::nonNull(Type::id()),
+                        'city2Id' => Type::nonNull(Type::id()),
                     ]
                 ]
             ],
