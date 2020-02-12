@@ -1,10 +1,10 @@
 <?php
 
-namespace RailBaron\GraphQL\Type;
+namespace RailBaron\Type;
 
 use GraphQL\Type\Definition\Type;
 use RailBaron\Context\Context;
-use RailBaron\GraphQL\Model\Region;
+use RailBaron\Model\Region;
 
 class RegionType extends BaseType
 {

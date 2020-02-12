@@ -10,7 +10,7 @@ class PayoutDao extends BaseDao
     public function __construct(Context $context)
     {
         parent::__construct($context);
-        $this->defaultClassPath = 'RailBaron\GraphQL\Model\Payout';
+        $this->defaultClassPath = 'RailBaron\Model\Payout';
     }
 
     public function payoutForCityIds($city1Id, $city2Id)

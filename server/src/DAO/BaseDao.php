@@ -51,4 +51,10 @@ class BaseDao
     {
         return count($dbAssoc) ? $this->context->services->arrayService->mapArrayToObjects($classPath ?: $this->defaultClassPath, [$dbAssoc])[0] : null;
     }
+
+    protected function insert($query, ...$params)
+    {
+        $this->context->dbConnection->db->execute($query, ...$params);
+        return $this->context->dbConnection->db->insert_id();
+    }
 }

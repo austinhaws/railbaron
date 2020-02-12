@@ -15,6 +15,9 @@ class WordService extends BaseService
 
         $words = $this->context->services->curlService->curl($url);
 
+        if ($words === false) {
+            $words = '["NOT", "ONLINE", "' . rand() . '"]';
+        }
         return join(' ', json_decode($words));
     }
 }

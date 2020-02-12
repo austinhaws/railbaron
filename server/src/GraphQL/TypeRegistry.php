@@ -3,10 +3,12 @@
 namespace RailBaron\GraphQL;
 
 use RailBaron\Context\Context;
-use RailBaron\GraphQL\Type\CityType;
-use RailBaron\GraphQL\Type\PayoutType;
-use RailBaron\GraphQL\Type\QueryType;
-use RailBaron\GraphQL\Type\RegionType;
+use RailBaron\Type\CityType;
+use RailBaron\Type\GameType;
+use RailBaron\Type\PayoutType;
+use RailBaron\Type\QueryType;
+use RailBaron\Type\RegionType;
+use ReflectionClass;
 
 class TypeRegistry
 {
@@ -15,6 +17,10 @@ class TypeRegistry
 
     /** @var CityType */
     private $cityType;
+    /** @var GameType */
+    private $gameType;
+    /** @var MutationType */
+    private $mutationType;
     /** @var PayoutType */
     private $payoutType;
     /** @var QueryType */
@@ -27,24 +33,47 @@ class TypeRegistry
         $this->context = $context;
     }
 
+    private function getType($varName, $classPath)
+    {
+        if (!$this->$varName) {
+            try {
+                $reflection = new ReflectionClass($classPath);
+                $this->$varName = $reflection->newInstanceArgs([$this->context]);
+            } catch (\ReflectionException $e) {
+                throw new \RuntimeException($e);
+            }
+        }
+
+        return $this->$varName;
+    }
+
     public function cityType()
     {
-        return $this->cityType ?: ($this->cityType = new CityType($this->context));
+        return $this->getType('cityType', 'RailBaron\Type\CityType');
+    }
+
+    public function gameType()
+    {
+        return $this->getType('gameType', 'RailBaron\Type\GameType');
+    }
+
+    public function mutationType()
+    {
+        return $this->getType('mutationType', 'RailBaron\TypeInput\MutationType');
     }
 
     public function payoutType()
     {
-        return $this->payoutType ?: ($this->payoutType = new PayoutType($this->context));
+        return $this->getType('payoutType', 'RailBaron\Type\PayoutType');
     }
 
     public function queryType()
     {
-        return $this->queryType ?: ($this->queryType = new QueryType($this->context));
+        return $this->getType('queryType', 'RailBaron\Type\QueryType');
     }
 
     public function regionType()
     {
-        return $this->regionType ?: ($this->regionType = new RegionType($this->context));
+        return $this->getType('regionType', 'RailBaron\Type\RegionType');
     }
-
 }

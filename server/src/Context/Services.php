@@ -6,7 +6,9 @@ use RailBaron\Service\ArrayService;
 use RailBaron\Service\CityService;
 use RailBaron\Service\CurlService;
 use RailBaron\Service\EnvironmentService;
+use RailBaron\Service\GameService;
 use RailBaron\Service\GraphQLService;
+use RailBaron\Service\PlayerService;
 use RailBaron\Service\RegionService;
 use RailBaron\Service\TableService;
 use RailBaron\Service\WordService;
@@ -21,8 +23,12 @@ class Services
     public $curlService;
     /** @var EnvironmentService */
     public $environmentService;
+    /** @var GameService */
+    public $gameService;
     /** @var GraphQLService */
     public $graphQLService;
+    /** @var PlayerService */
+    public $playerService;
     /** @var RegionService */
     public $regionService;
     /** @var TableService */
@@ -36,6 +42,8 @@ class Services
         $this->cityService = new CityService($context);
         $this->curlService = new CurlService($context);
         $this->environmentService = new EnvironmentService($context);
+        $this->gameService = new GameService($context);
+        $this->playerService = new PlayerService($context);
         $this->graphQLService = new GraphQLService($context);
         $this->regionService = new RegionService($context);
         $this->tableService = new TableService($context);

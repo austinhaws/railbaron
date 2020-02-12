@@ -1,6 +1,6 @@
 <?php
 
-namespace RailBaron\GraphQL\Model;
+namespace RailBaron\Model;
 
 use GraphQL\Utils\Utils;
 

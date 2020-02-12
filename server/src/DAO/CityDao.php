@@ -10,7 +10,7 @@ class CityDao extends BaseDao
     public function __construct(Context $context)
     {
         parent::__construct($context);
-        $this->defaultClassPath = 'RailBaron\GraphQL\Model\City';
+        $this->defaultClassPath = 'RailBaron\Model\City';
     }
 
     public function cityForId($id)

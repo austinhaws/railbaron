@@ -8,6 +8,7 @@ use GraphQL\Type\Schema;
 class GraphQLService extends BaseService
 {
     const QUERY = 'query';
+    const MUTATION = 'mutation';
 
     public function run()
     {
@@ -26,7 +27,10 @@ class GraphQLService extends BaseService
         }
 
         $result = GraphQL::executeQuery(
-            new Schema([self::QUERY => $this->context->typeRegistry->queryType()]),
+            new Schema([
+                self::QUERY => $this->context->typeRegistry->queryType(),
+                self::MUTATION => $this->context->typeRegistry->mutationType(),
+            ]),
             $data[self::QUERY],
             null,
             $this->context,

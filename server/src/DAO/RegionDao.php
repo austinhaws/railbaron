@@ -10,7 +10,7 @@ class RegionDao extends BaseDao
     public function __construct(Context $context)
     {
         parent::__construct($context);
-        $this->defaultClassPath = 'RailBaron\GraphQL\Model\Region';
+        $this->defaultClassPath = 'RailBaron\Model\Region';
     }
 
     public function regions()

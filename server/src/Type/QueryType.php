@@ -1,6 +1,6 @@
 <?php
 
-namespace RailBaron\GraphQL\Type;
+namespace RailBaron\Type;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
