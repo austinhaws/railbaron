@@ -4,6 +4,7 @@ namespace RailBaron\Service;
 
 use Dotenv\Dotenv;
 use RailBaron\Context\Context;
+use RailBaron\Enum\Environment;
 
 class EnvironmentService extends BaseService
 {
@@ -18,26 +19,26 @@ class EnvironmentService extends BaseService
 
     public function isProduction()
     {
-        return $this->isProduction ?: ($this->isProduction = (0 === strcmp(getenv('APP_ENV'), 'production')));
+        return $this->isProduction ?: ($this->isProduction = (0 === strcmp(getenv(Environment::APP_ENV), 'production')));
     }
 
     public function dbHost()
     {
-        return getenv('DB_HOST');
+        return getenv(Environment::DB_HOST);
     }
 
     public function dbUsername()
     {
-        return getenv('DB_USERNAME');
+        return getenv(Environment::DB_USERNAME);
     }
 
     public function dbPassword()
     {
-        return getenv('DB_PASSWORD');
+        return getenv(Environment::DB_PASSWORD);
     }
 
     public function dbDatabase()
     {
-        return getenv('DB_DATABASE');
+        return getenv(Environment::DB_DATABASE);
     }
 }
