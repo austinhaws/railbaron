@@ -1,0 +1,74 @@
+<?php
+
+namespace RailBaron\Enum;
+
+abstract class CityName extends BaseEnum
+{
+    const ALBANY = 'Albany';
+    const ATLANTA = 'Atlanta';
+    const BALTIMORE = 'Baltimore';
+    const BILLINGS = 'Billings';
+    const BIRMINGHAM = 'Birmingham';
+    const BOSTON = 'Boston';
+    const BUFFALO = 'Buffalo';
+    const BUTTE = 'Butte';
+    const CASPER = 'Casper';
+    const CHARLESTON = 'Charleston';
+    const CHARLOTTE = 'Charlotte';
+    const CHATTANOOGA = 'Chattanooga';
+    const CHICAGO = 'Chicago';
+    const CINCINNATI = 'Cincinnati';
+    const CLEVELAND = 'Cleveland';
+    const COLUMBUS = 'Columbus';
+    const DALLAS = 'Dallas';
+    const DENVER = 'Denver';
+    const DES_MOINES = 'Des Moines';
+    const DETROIT = 'Detroit';
+    const EL_PASO = 'El Paso';
+    const FARGO = 'Fargo';
+    const FORT_WORTH = 'Fort Worth';
+    const HOUSTON = 'Houston';
+    const INDIANAPOLIS = 'Indianapolis';
+    const JACKSONVILLE = 'Jacksonville';
+    const KANSAS_CITY = 'Kansas City';
+    const KNOXVILLE = 'Knoxville';
+    const LAS_VEGAS = 'Las Vegas';
+    const LITTLE_ROCK = 'Little Rock';
+    const LOS_ANGELES = 'Los Angeles';
+    const LOUISVILLE = 'Louisville';
+    const MEMPHIS = 'Memphis';
+    const MIAMI = 'Miami';
+    const MILWAUKEE = 'Milwaukee';
+    const MINNEAPOLIS = 'Minneapolis';
+    const MOBILE = 'Mobile';
+    const NASHVILLE = 'Nashville';
+    const NEW_ORLEANS = 'New Orleans';
+    const NEW_YORK = 'New York';
+    const NORFOLK = 'Norfolk';
+    const OAKLAND = 'Oakland';
+    const OKLAHOMA_CITY = 'Oklahoma City';
+    const OMAHA = 'Omaha';
+    const PHILADELPHIA = 'Philadelphia';
+    const PHOENIX = 'Phoenix';
+    const PITTSBURGH = 'Pittsburgh';
+    const POCATELLO = 'Pocatello';
+    const PORTLAND_ORE = 'Portland, Ore';
+    const PORTLAND_MA = 'Portland, Ma';
+    const PUEBLO = 'Pueblo';
+    const RAPID_CITY = 'Rapid City';
+    const RENO = 'Reno';
+    const RICHMOND = 'Richmond';
+    const SACRAMENTO = 'Sacramento';
+    const SALT_LAKE_CITY = 'Salt Lake City';
+    const SAN_ANTONIO = 'San Antonio';
+    const SAN_DIEGO = 'San Diego';
+    const SAN_FRANCISCO = 'San Francisco';
+    const SEATTLE = 'Seattle';
+    const SHREVEPORT = 'Shreveport';
+    const SPOKANE = 'Spokane';
+    const ST_LOUIS = 'St. Louis';
+    const ST_PAUL = 'St. Paul';
+    const TAMPA = 'Tampa';
+    const TUCUMCARI = 'Tucumcari';
+    const WASHINGTON = 'Washington';
+}

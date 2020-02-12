@@ -6,6 +6,8 @@ use RailBaron\Service\ArrayService;
 use RailBaron\Service\CityService;
 use RailBaron\Service\EnvironmentService;
 use RailBaron\Service\GraphQLService;
+use RailBaron\Service\RegionService;
+use RailBaron\Service\TableService;
 
 class Services
 {
@@ -17,6 +19,10 @@ class Services
     public $environmentService;
     /** @var GraphQLService */
     public $graphQLService;
+    /** @var TableService */
+    public $tableService;
+    /** @var RegionService */
+    public $regionService;
 
     public function __construct(Context $context)
     {
@@ -24,5 +30,7 @@ class Services
         $this->cityService = new CityService($context);
         $this->environmentService = new EnvironmentService($context);
         $this->graphQLService = new GraphQLService($context);
+        $this->tableService = new TableService($context);
+        $this->regionService = new RegionService($context);
     }
 }

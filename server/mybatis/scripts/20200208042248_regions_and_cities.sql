@@ -9,7 +9,7 @@ CREATE TABLE region (
 
 INSERT INTO region (name) VALUES
 	('North Central'),
-	('North East'),
+	('NorthEast'),
 	('Northwest'),
 	('Plains'),
 	('South Central'),
@@ -27,7 +27,7 @@ CREATE TABLE city (
 
 INSERT INTO city (region_id, name)
 	SELECT
-	    (SELECT id FROM region WHERE name = 'North East') region_id,
+	    (SELECT id FROM region WHERE name = 'NorthEast') region_id,
 		city_names.name name
 	FROM (
 		SELECT 'Albany' name UNION
@@ -105,7 +105,7 @@ INSERT INTO city (region_id, name)
 		SELECT 'Detroit' name UNION
 		SELECT 'Indianapolis' name UNION
 		SELECT 'Milwaukee' name UNION
-		SELECT 'St. Louis' name 
+		SELECT 'St. Louis' name
 	) city_names
 ;
 INSERT INTO city (region_id, name)

@@ -34,7 +34,14 @@ class QueryType extends BaseType
                         'city1Id' => Type::nonNull(Type::id()),
                         'city2Id' => Type::nonNull(Type::id()),
                     ]
-                ]
+                ],
+                'randomCity' => [
+                    'type' => $context->typeRegistry->cityType(),
+                    'description' => 'Randomly select a city from an optionally predefined region',
+                    'args' => [
+                        'regionId' => Type::id(),
+                    ],
+                ],
             ],
         ]);
     }
@@ -66,6 +73,10 @@ class QueryType extends BaseType
         $city1Id = $this->getArgFieldValue($args, 'city1Id');
         $city2Id = $this->getArgFieldValue($args, 'city2Id');
         return $this->context->daos->payoutDao->payoutForCityIds($city1Id, $city2Id);
+    }
 
+    public function resolveRandomCity($rootValue, $args, $context, ResolveInfo $info)
+    {
+        return $this->context->services->cityService->randomCity($this->getArgFieldValue($args, 'regionId'));
     }
 }
