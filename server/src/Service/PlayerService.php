@@ -2,11 +2,17 @@
 
 namespace RailBaron\Service;
 
+use GraphQL\Utils\Utils;
 use RailBaron\Enum\PlayerColor;
 use RailBaron\Model\Player;
 
 class PlayerService extends BaseService
 {
+    /**
+     * @param $gameId
+     * @param $numberPlayers
+     * @return array [Player]
+     */
     public function createPlayers($gameId, $numberPlayers)
     {
         $existingPlayers = $this->context->daos->playerDao->playersForGameId($gameId);
@@ -15,7 +21,7 @@ class PlayerService extends BaseService
         }, $existingPlayers ?: []);
 
         $availableColors = PlayerColor::getConstants();
-        array_walk($existingNames, function (Player $player) use ($availableColors) {
+        array_walk($existingPlayers, function (Player $player) use ($availableColors) {
             if (($key = array_search($player->tawColor, $availableColors)) !== false) {
                 unset($availableColors[$key]);
             }
@@ -70,5 +76,28 @@ class PlayerService extends BaseService
             $isDeleted = true;
         }
         return $isDeleted;
+    }
+
+    public function savePlayer($playerArgs, $gamePhrase)
+    {
+        // look up game by game phrase
+        $game = $this->context->daos->gameDao->gameByPhrase($gamePhrase);
+        $playerId = $this->context->utils->typeUtil->getArgFieldValue($playerArgs, 'id');
+        if ($playerId) {
+            // if player.id, lookup player by player id & make sure gameids match
+            $player = $this->context->daos->playerDao->playerById($playerId);
+            if ($player->gameId !== $game->id) {
+                $player = $this->createPlayers($game->id, 1)[0];
+            }
+        } else {
+            // else set player.gameid to gameid
+            $player = $this->createPlayers($game->id, 1)[0];
+        }
+
+        $player->gameId = $game->id;
+        Utils::assign($player, $playerArgs);
+
+        // send new fields update to
+        return $this->context->daos->playerDao->savePlayer($player);
     }
 }

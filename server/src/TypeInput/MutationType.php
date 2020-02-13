@@ -29,21 +29,37 @@ class MutationType extends BaseType
                         'gamePhrase' => Type::nonNull(Type::string()),
                     ]
                 ],
+                'savePlayer' => [
+                    'type' => $context->typeRegistry->playerType(),
+                    'description' => 'Save a player to a game',
+                    'args' => [
+                        'player' => Type::nonNull($context->typeRegistry->playerInputType()),
+                        'gamePhrase' => Type::nonNull(Type::string()),
+                    ]
+                ],
             ],
         ]);
     }
 
     public function resolveStartNewGame($rootValue, $args, $context, ResolveInfo $info)
     {
-        $numberPlayers = $this->getArgFieldValue($args, 'numberPlayers');
+        $numberPlayers = $this->context->utils->typeUtil->getArgFieldValue($args, 'numberPlayers');
         return $this->context->services->gameService->startNewGame($numberPlayers);
     }
 
     public function resolveDeletePlayer($rootValue, $args, $context, ResolveInfo $info)
     {
-        $gamePhrase = $this->getArgFieldValue($args, 'gamePhrase');
-        $playerId = $this->getArgFieldValue($args, 'playerId');
+        $gamePhrase = $this->context->utils->typeUtil->getArgFieldValue($args, 'gamePhrase');
+        $playerId = $this->context->utils->typeUtil->getArgFieldValue($args, 'playerId');
         $this->context->services->playerService->deletePlayer($playerId, $gamePhrase);
         return $this->context->daos->gameDao->gameByPhrase($gamePhrase);
+    }
+
+    public function resolveSavePlayer($rootValue, $args, $context, ResolveInfo $info)
+    {
+        return $this->context->services->playerService->savePlayer(
+            $this->context->utils->typeUtil->getArgFieldValue($args, 'player'),
+            $this->context->utils->typeUtil->getArgFieldValue($args, 'gamePhrase')
+        );
     }
 }

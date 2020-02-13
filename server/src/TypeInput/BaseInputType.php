@@ -1,11 +1,11 @@
 <?php
 
-namespace RailBaron\Type;
+namespace RailBaron\TypeInput;
 
-use GraphQL\Type\Definition\ObjectType;
+use GraphQL\Type\Definition\InputObjectType;
 use RailBaron\Context\Context;
 
-class BaseType extends ObjectType
+class BaseInputType extends InputObjectType
 {
     /** @var Context */
     protected $context;

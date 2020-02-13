@@ -16,13 +16,17 @@ class Context {
     public $services;
     /** @var TypeRegistry */
     public $typeRegistry;
+    /** @var Utils */
+	public $utils;
 
     /** @var Context */
     private static $instance;
 
-    private function __construct()
+	private function __construct()
     {
         $this->cache = new Psr16Adapter('Memstatic');
+
+        $this->utils = new Utils($this);
 
         $this->daos = new Daos($this);
 

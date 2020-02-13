@@ -14,7 +14,6 @@ class GameType extends BaseType
             'name' => 'Game',
             'fields' => function () use ($context) {
                 return [
-                    'id' => Type::id(),
                     'createTimestamp' => Type::string(),
                     'phrase' => Type::string(),
                     'players' => Type::listOf($context->typeRegistry->playerType()),

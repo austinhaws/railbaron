@@ -9,6 +9,8 @@ use RailBaron\Type\PayoutType;
 use RailBaron\Type\PlayerType;
 use RailBaron\Type\QueryType;
 use RailBaron\Type\RegionType;
+use RailBaron\TypeInput\MutationType;
+use RailBaron\TypeInput\PlayerInputType;
 use ReflectionClass;
 
 class TypeRegistry
@@ -24,6 +26,8 @@ class TypeRegistry
     private $mutationType;
     /** @var PayoutType */
     private $payoutType;
+    /** @var PlayerInputType */
+    private $playerInputType;
     /** @var PlayerType */
     private $playerType;
     /** @var QueryType */
@@ -73,6 +77,11 @@ class TypeRegistry
     public function playerType()
     {
         return $this->getType('playerType', 'RailBaron\Type\PlayerType');
+    }
+
+    public function playerInputType()
+    {
+        return $this->getType('playerInputType', 'RailBaron\TypeInput\PlayerInputType');
     }
 
     public function queryType()

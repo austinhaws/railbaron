@@ -48,7 +48,7 @@ class QueryType extends BaseType
 
     public function resolveRegions($rootValue, $args, $context, ResolveInfo $info)
     {
-        $regionIdParam = $this->getArgFieldValue($args, 'id');
+        $regionIdParam = $this->context->utils->typeUtil->getArgFieldValue($args, 'id');
         if ($regionIdParam) {
             $regions = [$this->context->daos->regionDao->regionForId($regionIdParam)];
         } else {
@@ -59,7 +59,7 @@ class QueryType extends BaseType
 
     public function resolveCities($rootValue, $args, $context, ResolveInfo $info)
     {
-        $idParam = $this->getArgFieldValue($args, 'id');
+        $idParam = $this->context->utils->typeUtil->getArgFieldValue($args, 'id');
         if ($idParam) {
             $cities = [$this->context->daos->cityDao->cityForId($idParam)];
         } else {
@@ -70,13 +70,13 @@ class QueryType extends BaseType
 
     public function resolvePayout($rootValue, $args, $context, ResolveInfo $info)
     {
-        $city1Id = $this->getArgFieldValue($args, 'city1Id');
-        $city2Id = $this->getArgFieldValue($args, 'city2Id');
+        $city1Id = $this->context->utils->typeUtil->getArgFieldValue($args, 'city1Id');
+        $city2Id = $this->context->utils->typeUtil->getArgFieldValue($args, 'city2Id');
         return $this->context->daos->payoutDao->payoutForCityIds($city1Id, $city2Id);
     }
 
     public function resolveRandomCity($rootValue, $args, $context, ResolveInfo $info)
     {
-        return $this->context->services->cityService->randomCity($this->getArgFieldValue($args, 'regionId'));
+        return $this->context->services->cityService->randomCity($this->context->utils->typeUtil->getArgFieldValue($args, 'regionId'));
     }
 }

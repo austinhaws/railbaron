@@ -16,7 +16,6 @@ class PlayerType extends BaseType
                 return [
                     'id' => Type::id(),
                     'game' => $context->typeRegistry->gameType(),
-                    'gameId' => Type::id(),
                     'fromCity' => $context->typeRegistry->cityType(),
                     'fromCityId' => Type::id(),
                     'homeCity' => $context->typeRegistry->cityType(),
