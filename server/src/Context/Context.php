@@ -1,30 +1,36 @@
 <?php
+
 namespace RailBaron\Context;
 
 use Phpfastcache\Helper\Psr16Adapter;
 use RailBaron\DAO\DBConnection;
 use RailBaron\GraphQL\TypeRegistry;
 
-class Context {
+class Context
+{
+    /** @var Buffers */
+    public $buffers;
     /** @var Psr16Adapter */
     public $cache;
-    /** @var Daos  */
+    /** @var Daos */
     public $daos;
-    /** @var DBConnection  */
+    /** @var DBConnection */
     public $dbConnection;
-    /** @var Services  */
+    /** @var Services */
     public $services;
     /** @var TypeRegistry */
     public $typeRegistry;
     /** @var Utils */
-	public $utils;
+    public $utils;
 
     /** @var Context */
     private static $instance;
 
-	private function __construct()
+    private function __construct()
     {
         $this->cache = new Psr16Adapter('Memstatic');
+
+        $this->buffers = new Buffers($this);
 
         $this->utils = new Utils($this);
 
@@ -37,7 +43,8 @@ class Context {
         $this->dbConnection = new DBConnection($this);
     }
 
-    public static function instance() {
+    public static function instance()
+    {
         if (!self::$instance) {
             self::$instance = new Context();
         }

@@ -27,4 +27,9 @@ class CityDao extends BaseDao
     {
         return $this->dbArrayToObjects($this->getAll('SELECT * FROM city WHERE region_id = ?', [$regionId]));
     }
+
+    public function citiesByIds($ids)
+    {
+        return $this->recordsByIds($ids, 'city');
+    }
 }

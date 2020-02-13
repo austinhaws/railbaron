@@ -28,4 +28,9 @@ class GameDao extends BaseDao
         $gameId = $this->insert('INSERT INTO game (phrase) VALUES (?)', [$phrase]);
         return $this->gameById($gameId);
     }
+
+    public function gamesByIds($ids)
+    {
+        return $this->recordsByIds($ids, 'game');
+    }
 }

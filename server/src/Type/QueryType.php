@@ -51,8 +51,10 @@ class QueryType extends BaseType
         $regionIdParam = $this->context->utils->typeUtil->getArgFieldValue($args, 'id');
         if ($regionIdParam) {
             $regions = [$this->context->daos->regionDao->regionForId($regionIdParam)];
+            $this->context->buffers->regionBuffer->addObject($regions);
         } else {
             $regions = $this->context->daos->regionDao->regions();
+            $this->context->buffers->regionBuffer->addObjects($regions);
         }
         return $regions;
     }
@@ -62,8 +64,10 @@ class QueryType extends BaseType
         $idParam = $this->context->utils->typeUtil->getArgFieldValue($args, 'id');
         if ($idParam) {
             $cities = [$this->context->daos->cityDao->cityForId($idParam)];
+            $this->context->buffers->cityBuffer->addObject($cities);
         } else {
             $cities = $this->context->daos->cityDao->cities();
+            $this->context->buffers->cityBuffer->addObjects($cities);
         }
         return $cities;
     }

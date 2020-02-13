@@ -1,6 +1,7 @@
 <?php
 namespace RailBaron\Type;
 
+use GraphQL\Deferred;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use RailBaron\Context\Context;
@@ -30,6 +31,11 @@ class CityType extends BaseType
 
     public function resolveRegion($dbArray, $args, $context, ResolveInfo $info)
     {
-        return $this->context->daos->regionDao->regionForId($dbArray->regionId);
+        $this->context->buffers->regionBuffer->addId($dbArray->regionId);
+
+        return new Deferred(function () use ($dbArray) {
+            $this->context->buffers->regionBuffer->loadBuffer();
+            return $this->context->buffers->regionBuffer->getObject($dbArray->regionId);
+        });
     }
 }

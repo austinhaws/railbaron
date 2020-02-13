@@ -22,4 +22,9 @@ class RegionDao extends BaseDao
     {
         return $this->dbAssocToObject($this->getAll('SELECT * FROM region WHERE id = ?', [$id])[0]);
     }
+
+    public function regionsByIds($ids)
+    {
+        return $this->recordsByIds($ids, 'region');
+    }
 }

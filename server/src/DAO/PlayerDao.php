@@ -80,4 +80,9 @@ class PlayerDao extends BaseDao
             ]
         );
     }
+
+    public function playersByIds($ids)
+    {
+        return $this->recordsByIds($ids, 'player');
+    }
 }

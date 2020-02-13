@@ -57,4 +57,9 @@ class BaseDao
         $this->context->dbConnection->db->execute($query, ...$params);
         return $this->context->dbConnection->db->insert_id();
     }
+
+    public function recordsByIds($ids, $tableName)
+    {
+        return $this->dbArrayToObjects($this->getAll("SELECT * FROM $tableName WHERE id IN ({$this->createQuestionMarks(count($ids))})", $ids));
+    }
 }
