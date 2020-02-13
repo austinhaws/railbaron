@@ -35,4 +35,9 @@ class PlayerDao extends BaseDao
     {
         return $this->dbAssocToObject(($this->getAll('SELECT * FROM player WHERE id = ?', [$id])));
     }
+
+    public function deletePlayerById($id)
+    {
+        return $this->execute('DELETE FROM player WHERE id = ?', [$id]);
+    }
 }

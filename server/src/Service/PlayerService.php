@@ -55,4 +55,20 @@ class PlayerService extends BaseService
         }
         return $players;
     }
+
+    public function deletePlayer($playerId, $gamePhrase)
+    {
+        // make sure player belongs to the game
+        $game = $this->context->daos->gameDao->gameByPhrase($gamePhrase);
+        $players = $this->context->daos->playerDao->playersForGameId($game->id);
+        $player = $this->context->services->arrayService->find($players, function ($player) use ($playerId) {
+            return $player->id === "$playerId";
+        });
+        $isDeleted = false;
+        if ($player !== null) {
+            $this->context->daos->playerDao->deletePlayerById($player->id);
+            $isDeleted = true;
+        }
+        return $isDeleted;
+    }
 }
