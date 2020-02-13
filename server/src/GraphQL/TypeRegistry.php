@@ -6,6 +6,7 @@ use RailBaron\Context\Context;
 use RailBaron\Type\CityType;
 use RailBaron\Type\GameType;
 use RailBaron\Type\PayoutType;
+use RailBaron\Type\PlayerType;
 use RailBaron\Type\QueryType;
 use RailBaron\Type\RegionType;
 use ReflectionClass;
@@ -23,6 +24,8 @@ class TypeRegistry
     private $mutationType;
     /** @var PayoutType */
     private $payoutType;
+    /** @var PlayerType */
+    private $playerType;
     /** @var QueryType */
     private $queryType;
     /** @var RegionType */
@@ -65,6 +68,11 @@ class TypeRegistry
     public function payoutType()
     {
         return $this->getType('payoutType', 'RailBaron\Type\PayoutType');
+    }
+
+    public function playerType()
+    {
+        return $this->getType('playerType', 'RailBaron\Type\PlayerType');
     }
 
     public function queryType()

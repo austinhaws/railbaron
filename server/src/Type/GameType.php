@@ -4,6 +4,7 @@ namespace RailBaron\Type;
 
 use GraphQL\Type\Definition\Type;
 use RailBaron\Context\Context;
+use RailBaron\Model\Game;
 
 class GameType extends BaseType
 {
@@ -16,8 +17,14 @@ class GameType extends BaseType
                     'id' => Type::id(),
                     'createTimestamp' => Type::string(),
                     'phrase' => Type::string(),
+                    'players' => Type::listOf($context->typeRegistry->playerType()),
                 ];
             },
         ]);
+    }
+
+    public function resolvePlayers(Game $game)
+    {
+        return $this->context->daos->playerDao->playersForGameId($game->id);
     }
 }
