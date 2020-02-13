@@ -1,7 +1,11 @@
 composer.phar
 vendor**
 .idea/
-node_modules**
-dist**
+dist/
 environments/
 .env
+node_modules/
+*.DS_Store
+bundles**
+node**
+/*.iml

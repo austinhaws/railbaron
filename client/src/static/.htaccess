@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+
+  #Redirect all traffic to https
+#  RewriteCond %{QUERY_STRING} !healthcheck
+#  RewriteCond %{HTTPS} !=on
+#  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#  RewriteCond %{HTTP:X-Forwarded-Port} !443
+#  RewriteRule ^/?$ https://%{SERVER_NAME}/ [R=301,L]
+
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+#http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
+  RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+  RewriteRule ^.*$ %2/index.html [QSA,L]
+
+</IfModule>
