@@ -33,7 +33,7 @@ const cleanWebPack = new CleanWebpackPlugin({
 // tell it what file to starting compiling on and what to call it when done
 const config = {
 	entry: {
-		examples: APP_DIR + '/app/App.jsx',
+		examples: APP_DIR + '/components/app/App.jsx',
 	},
 	output: {
 		path: BUILD_DIR,

@@ -1,14 +1,14 @@
 import React from "react";
-import History from "../../app/history/History";
-import Home from "../../pages/Home";
+import Home from "../../components/home/Home";
 import {Route} from "react-router-dom";
 import Page from "./Page";
+import {mobContextValue} from "../mobx/MobContext";
 
 export default {
 	public: {
 		home: new Page({
-			component: Home,
-			forward: () => History.forward(`/`),
+			Component: Home,
+			forward: () => mobContextValue.historyStore.history.forward(`/`),
 			path: '/',
 			title: 'Rail Baron',
 		}),
