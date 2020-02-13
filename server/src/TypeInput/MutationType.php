@@ -15,7 +15,7 @@ class MutationType extends BaseType
             'name' => 'Mutation',
             'fields' => [
                 'startNewGame' => [
-                    'type' => Type::listOf($context->typeRegistry->gameType()),
+                    'type' => $context->typeRegistry->gameType(),
                     'description' => 'Creates a new game',
                     'args' => [
                         'numberPlayers' => Type::int(),
@@ -28,6 +28,6 @@ class MutationType extends BaseType
     public function resolveStartNewGame($rootValue, $args, $context, ResolveInfo $info)
     {
         $numberPlayers = $this->getArgFieldValue($args, 'numberPlayers');
-        return ['startNewGame' => $this->context->services->gameService->startNewGame($numberPlayers)];
+        return $this->context->services->gameService->startNewGame($numberPlayers);
     }
 }
