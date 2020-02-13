@@ -6,5 +6,5 @@ export default {
 	selected: {
 		backgroundColor: 'red',
 		color: 'white',
-	}
+	},
 };

@@ -8,6 +8,8 @@ import ContextProvider from "../../app/ContextProvider";
 import MobContext from "../../app/mobx/MobContext";
 import {observer} from "mobx-react";
 import Pages, {renderPageRoutes} from "../../app/pages/Pages";
+import Header from "../header/Header";
+import ClassesContext from "../../app/jss/ClassesContext";
 
 const propTypes = {
     history: PropTypes.object.isRequired,
@@ -16,6 +18,7 @@ const defaultProps = {};
 
 const AppClass = observer(({history}) => {
     const {appStore, historyStore} = useContext(MobContext);
+    const classes = useContext(ClassesContext);
 
     useEffect(() => {
         if (!history) {
@@ -25,16 +28,20 @@ const AppClass = observer(({history}) => {
     }, []);
 
     return (
-        <div>
-            <Helmet>
-                <title>{appStore.pageTitle}</title>
-            </Helmet>
+        <div className={classes.app__content}>
+            <div className={classes.app__content__container}>
+                <Helmet>
+                    <title>{appStore.pageTitle}</title>
+                </Helmet>
 
-            <main className="main-content-wrapper">
-                <Switch>
-                    {renderPageRoutes(Pages.public)}
-                </Switch>
-            </main>
+                <Header/>
+
+                <div>
+                    <Switch>
+                        {renderPageRoutes(Pages.public)}
+                    </Switch>
+                </div>
+            </div>
         </div>
     );
 });

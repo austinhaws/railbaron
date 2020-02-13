@@ -1,16 +1,16 @@
-export const borderSizeWidth = '9px';
-export const borderSizeHeight = '18px';
-const displayWidth = '1200px';
-const displayHeight = '800px';
+const appPadding = 4;
 
 export default {
-	app__content: {
-		fontFamily: '"Courier New", Courier, monospace',
-		width: displayWidth,
-		display: 'flex',
-		margin: '0 auto',
-		padding: 0,
-		height: displayHeight,
-		lineHeight: borderSizeHeight,
-	},
+    app__content: {
+        fontFamily: '"Courier New", Courier, monospace',
+        maxWidth: '1000px',
+        minWidth: '630px',
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '0 auto',
+        padding: `${appPadding}px`,
+    },
+    app__content__container: {
+        width: `calc(100% - ${appPadding * 2}px)`,
+    },
 };
