@@ -42,6 +42,13 @@ class QueryType extends BaseType
                         'regionId' => Type::id(),
                     ],
                 ],
+                'game' => [
+                    'type' => $context->typeRegistry->gameType(),
+                    'description' => 'Fetch a game',
+                    'args' => [
+                        'phrase' => Type::string(),
+                    ],
+                ],
             ],
         ]);
     }
@@ -82,5 +89,10 @@ class QueryType extends BaseType
     public function resolveRandomCity($rootValue, $args, $context, ResolveInfo $info)
     {
         return $this->context->services->cityService->randomCity($this->context->utils->typeUtil->getArgFieldValue($args, 'regionId'));
+    }
+
+    public function resolveGame($rootValue, $args, $context, ResolveInfo $info)
+    {
+        return $this->context->daos->gameDao->gameByPhrase($this->context->utils->typeUtil->getArgFieldValue($args, 'phrase'));
     }
 }

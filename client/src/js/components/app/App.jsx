@@ -10,6 +10,8 @@ import {observer} from "mobx-react";
 import Pages, {renderPageRoutes} from "../../app/pages/Pages";
 import Header from "../header/Header";
 import ClassesContext from "../../app/jss/ClassesContext";
+import LocalStorage from "../../app/localstorage/LocalStorage";
+import webservice from "../../app/webservice/Webservice";
 
 const propTypes = {
     history: PropTypes.object.isRequired,
@@ -25,6 +27,13 @@ const AppClass = observer(({history}) => {
             console.error("history does not exist for app");
         }
         historyStore.history = history;
+
+        const gamePhrase = LocalStorage.gamePhrase.get();
+        if (gamePhrase) {
+            webservice.game.get(gamePhrase);
+        } else {
+            webservice.game.start();
+        }
     }, []);
 
     return (

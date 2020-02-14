@@ -1,4 +1,6 @@
 export default {
-	DOCUMENT_DELETE: 'documentDelete',
-	DOCUMENT_LINK: 'documentLink',
+    GAME: {
+	    GET: 'game-get',
+	    START: 'game-start',
+    },
 };
