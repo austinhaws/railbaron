@@ -32,7 +32,7 @@ const AppClass = observer(({history}) => {
         if (gamePhrase) {
             webservice.game.get('allod');
         } else {
-            // webservice.game.start();
+            webservice.game.startNewGame();
         }
     }, []);
 

@@ -1,6 +1,6 @@
 export default {
     GAME: {
 	    GET: 'game-get',
-	    START: 'game-start',
+        START_NEW_GAME: 'game-new-start',
     },
 };
