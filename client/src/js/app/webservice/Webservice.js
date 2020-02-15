@@ -7,40 +7,49 @@ import regionQuery from "../graphql/query/regionQuery";
 import payoutQuery from "../graphql/query/payoutQuery";
 import randomRegionQuery from "../graphql/query/randomRegionQuery";
 import randomCityQuery from "../graphql/query/randomCityQuery";
+import playerDeleteMutation from "../graphql/mutation/playerDeleteMutation";
+
+const queryResults = field => data => data.data[field];
 
 export default {
     city: {
         get: (cityId = undefined) =>
             graphQLWebservice.query(cityQuery(cityId), webserviceAjaxIds.CITY.GET)
-                .then(data => data.data.cities),
+                .then(queryResults('cities')),
 
         random: (regionId = undefined) =>
             graphQLWebservice.query(randomCityQuery(regionId), webserviceAjaxIds.CITY.RANDOM)
-                .then(data => data.data.randomCity),
+                .then(queryResults('randomCity')),
     },
 
     game: {
         get: gamePhrase =>
             graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
-                .then(data => data.data.game),
+                .then(queryResults('game')),
 
         startNewGame: (numberPlayers = undefined) =>
             graphQLWebservice.mutation(startNewGameMutation(numberPlayers), webserviceAjaxIds.GAME.START_NEW_GAME)
-                .then(data => data.data.startNameGame),
+                .then(queryResults('startNameGame')),
     },
 
     payout: (city1Id, city2Id) =>
         graphQLWebservice.query(payoutQuery(city1Id, city2Id), webserviceAjaxIds.PAYOUT)
-            .then(data => data.data.payout),
+            .then(queryResults('payout')),
+
+    player: {
+        delete: (playerId, gamePhrase) =>
+            graphQLWebservice.mutation(playerDeleteMutation(playerId, gamePhrase))
+                .then(queryResults('deletePlayer'))
+    },
 
     region: {
         get: (regionId = undefined) =>
             graphQLWebservice.query(regionQuery(regionId), webserviceAjaxIds.REGION.GET)
-                .then(data => data.data.regions),
+                .then(queryResults('regions')),
 
         random: () =>
             graphQLWebservice.query(randomRegionQuery(), webserviceAjaxIds.REGION.RANDOM)
-                .then(data => data.data.randomRegion),
+                .then(queryResults('randomRegion')),
     },
 
 };
