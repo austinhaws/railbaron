@@ -4,6 +4,7 @@ import gameQuery from "../graphql/query/gameQuery";
 import startNewGameMutation from "../graphql/mutation/startNewGameMutation";
 import cityQuery from "../graphql/query/cityQuery";
 import regionQuery from "../graphql/query/regionQuery";
+import payoutQuery from "../graphql/query/payoutQuery";
 
 export default {
     city: {
@@ -21,6 +22,10 @@ export default {
             graphQLWebservice.mutation(startNewGameMutation(numberPlayers), webserviceAjaxIds.GAME.START_NEW_GAME)
                 .then(data => data.data.startNameGame),
     },
+
+    payout: (city1Id, city2Id) =>
+        graphQLWebservice.query(payoutQuery(city1Id, city2Id), webserviceAjaxIds.PAYOUT)
+            .then(data => data.data.payout),
 
     region: {
         get: (regionId = undefined) =>

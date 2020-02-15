@@ -6,6 +6,7 @@ export default {
 	    GET: 'game-get',
         START_NEW_GAME: 'game-new-start',
     },
+    PAYOUT: 'payout',
     REGION: {
         GET: 'region-get',
     },
