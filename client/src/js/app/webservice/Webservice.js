@@ -8,6 +8,7 @@ import payoutQuery from "../graphql/query/payoutQuery";
 import randomRegionQuery from "../graphql/query/randomRegionQuery";
 import randomCityQuery from "../graphql/query/randomCityQuery";
 import playerDeleteMutation from "../graphql/mutation/playerDeleteMutation";
+import playerSaveMutation from "../graphql/mutation/playerSaveMutation";
 
 const queryResults = field => data => data.data[field];
 
@@ -39,7 +40,11 @@ export default {
     player: {
         delete: (playerId, gamePhrase) =>
             graphQLWebservice.mutation(playerDeleteMutation(playerId, gamePhrase))
-                .then(queryResults('deletePlayer'))
+                .then(queryResults('deletePlayer')),
+
+        save: (player, gamePhrase) =>
+            graphQLWebservice.mutation(playerSaveMutation(player, gamePhrase))
+                .then(queryResults('savePlayer')),
     },
 
     region: {
