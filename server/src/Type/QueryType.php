@@ -42,6 +42,11 @@ class QueryType extends BaseType
                         'regionId' => Type::id(),
                     ],
                 ],
+                'randomRegion' => [
+                    'type' => $context->typeRegistry->regionType(),
+                    'description' => 'Random region',
+                    'args' => [],
+                ],
                 'game' => [
                     'type' => $context->typeRegistry->gameType(),
                     'description' => 'Fetch a game',
@@ -87,6 +92,11 @@ class QueryType extends BaseType
     public function resolveRandomCity($rootValue, $args, $context, ResolveInfo $info)
     {
         return $this->context->services->cityService->randomCity($this->context->utils->typeUtil->getArgFieldValue($args, 'regionId'));
+    }
+
+    public function resolveRandomRegion($rootValue, $args, $context, ResolveInfo $info)
+    {
+        return $this->context->services->regionService->randomRegion();
     }
 
     public function resolveGame($rootValue, $args, $context, ResolveInfo $info)

@@ -9,5 +9,6 @@ export default {
     PAYOUT: 'payout',
     REGION: {
         GET: 'region-get',
+        RANDOM: 'region-random',
     },
 };

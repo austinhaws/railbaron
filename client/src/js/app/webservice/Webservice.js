@@ -5,6 +5,7 @@ import startNewGameMutation from "../graphql/mutation/startNewGameMutation";
 import cityQuery from "../graphql/query/cityQuery";
 import regionQuery from "../graphql/query/regionQuery";
 import payoutQuery from "../graphql/query/payoutQuery";
+import randomRegionQuery from "../graphql/query/randomRegionQuery";
 
 export default {
     city: {
@@ -31,6 +32,10 @@ export default {
         get: (regionId = undefined) =>
             graphQLWebservice.query(regionQuery(regionId), webserviceAjaxIds.REGION.GET)
                 .then(data => data.data.regions),
+
+        random: () =>
+            graphQLWebservice.query(randomRegionQuery(), webserviceAjaxIds.REGION.RANDOM)
+                .then(data => data.data.randomRegion),
     },
 
 };
