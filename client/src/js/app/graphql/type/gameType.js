@@ -1,4 +1,4 @@
-export default includeLink => `
+export default () => `
     phrase
     players {
         id

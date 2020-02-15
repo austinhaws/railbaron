@@ -3,8 +3,15 @@ import graphQLWebservice from "./graphQLWebservice";
 import gameQuery from "../graphql/query/gameQuery";
 import startNewGameMutation from "../graphql/mutation/startNewGameMutation";
 import cityQuery from "../graphql/query/cityQuery";
+import regionQuery from "../graphql/query/regionQuery";
 
 export default {
+    city: {
+        get: (cityId = undefined) =>
+            graphQLWebservice.query(cityQuery(cityId), webserviceAjaxIds.CITY.GET)
+                .then(data => data.data.cities),
+    },
+
     game: {
         get: gamePhrase =>
             graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
@@ -15,9 +22,10 @@ export default {
                 .then(data => data.data.startNameGame),
     },
 
-    city: {
-        get: (cityId = undefined) =>
-            graphQLWebservice.query(cityQuery(cityId), webserviceAjaxIds.CITY.GET)
-                .then(data => data.data.cities),
+    region: {
+        get: (regionId = undefined) =>
+            graphQLWebservice.query(regionQuery(regionId), webserviceAjaxIds.REGION.GET)
+                .then(data => data.data.regions),
     },
+
 };
