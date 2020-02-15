@@ -1,6 +1,7 @@
 export default {
     CITY: {
-      GET: 'city-get',
+        GET: 'city-get',
+        RANDOM: 'city-random',
     },
     GAME: {
 	    GET: 'game-get',

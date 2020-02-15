@@ -6,12 +6,17 @@ import cityQuery from "../graphql/query/cityQuery";
 import regionQuery from "../graphql/query/regionQuery";
 import payoutQuery from "../graphql/query/payoutQuery";
 import randomRegionQuery from "../graphql/query/randomRegionQuery";
+import randomCityQuery from "../graphql/query/randomCityQuery";
 
 export default {
     city: {
         get: (cityId = undefined) =>
             graphQLWebservice.query(cityQuery(cityId), webserviceAjaxIds.CITY.GET)
                 .then(data => data.data.cities),
+
+        random: (regionId = undefined) =>
+            graphQLWebservice.query(randomCityQuery(regionId), webserviceAjaxIds.CITY.RANDOM)
+                .then(data => data.data.randomCity),
     },
 
     game: {
