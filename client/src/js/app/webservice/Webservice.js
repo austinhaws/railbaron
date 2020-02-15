@@ -1,5 +1,6 @@
 import webserviceAjaxIds from "./webserviceAjaxIds";
 import graphQLWebservice from "./graphQLWebservice";
+import gameQuery from "../graphql/query/gameQuery";
 
 export default {
     // dataList: () => graphQLWebservice.query(dataListQuery(), webserviceAjaxIds.DATALISTS).then(data => data.data.dataLists),
@@ -11,42 +12,7 @@ export default {
     // },
 
     game: {
-        get: gamePhrase => graphQLWebservice.query(`
-                game(phrase: "${gamePhrase}) {
-                    phrase
-                    players {
-                        id
-                        name
-                        tawColor
-                        fromCity {
-                            id
-                            name
-                            region {
-                                id
-                                name
-                            }
-                        }
-                        toCity {
-                            id
-                            name
-                            region {
-                                id
-                                name
-                            }
-                        }
-                        homeCity {
-                            id
-                            name
-                            region {
-                                id
-                                name
-                            }
-                        }
-
-                    }
-                }
-            `, webserviceAjaxIds.GAME.GET
-        )
-            .then(data => data.data.game)
+        get: gamePhrase => graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
+            .then(data => console.log(data.data.game) || data.data.game)
     }
 };

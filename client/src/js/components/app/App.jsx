@@ -30,9 +30,9 @@ const AppClass = observer(({history}) => {
 
         const gamePhrase = LocalStorage.gamePhrase.get();
         if (gamePhrase) {
-            webservice.game.get(gamePhrase);
+            webservice.game.get('allod');
         } else {
-            webservice.game.start();
+            // webservice.game.start();
         }
     }, []);
 

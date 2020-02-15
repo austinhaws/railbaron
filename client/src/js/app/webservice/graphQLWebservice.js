@@ -1,7 +1,8 @@
 import {AjaxStatusCore, GraphQLCore, MessagePopupCore, objectAtPath} from "dts-react-common";
 import webserviceContext from "./webserviceContext";
+import {mobContextValue} from "../mobx/MobContext";
 
-export const ajaxStatus = new AjaxStatusCore((id, isStarting) => dispatchField('app.isAjaxingCount', (reduxStore.getState().app.isAjaxingCount || 0) + (isStarting ? 1 : -1)));
+export const ajaxStatus = new AjaxStatusCore((id, isStarting) => mobContextValue.appStore.isAjaxingCount += (isStarting ? 1 : -1));
 
 export default new GraphQLCore({
 	graphQLUrl: webserviceContext,

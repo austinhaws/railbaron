@@ -1,5 +1,5 @@
 const CONTEXT_URL = {
-	LOCAL: 'http://localhost:8080/api/',
+	LOCAL: 'http://localhost/railbaron/server/graphql.php',
 	DEV: 'https://???/graphql',
 	AT: 'https://???/graphql',
 	PROD: 'https://???/graphql',
