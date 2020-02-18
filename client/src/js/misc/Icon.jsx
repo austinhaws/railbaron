@@ -1,6 +1,20 @@
 import React from 'react';
 
 export default {
+    dice: className => (
+        <svg viewBox="0 0 180 155" xmlns="http://www.w3.org/2000/svg">
+            <path d="m1.4099 104.11 76.898 49.704 56.311-16.892 44.377-86.084-76.898-49.704-56.31 16.892z" className={className.border}/>
+            <path d="m45.807 18.021 76.898 49.704-44.397 86.09" className={className.border}/>
+            <path d="m122.67 67.737 56.33-16.898" className={className.border}/>
+            <circle transform="rotate(30)" cx="70.976" cy="16.881" r="7.1276" className={className.pip}/>
+            <circle transform="rotate(30)" cx="96.732" cy="43.123" r="7.1276" className={className.pip}/>
+            <circle transform="rotate(30)" cx="122.49" cy="69.366" r="7.1276" className={className.pip}/>
+            <ellipse transform="matrix(.21001 .9777 -.95256 .30436 0 0)" cx="122.92" cy="-106.18" rx="6.0646" ry="6.1957" className={className.pip}/>
+            <ellipse transform="matrix(.9777 -.21001 .30436 .95256 0 0)" cx="96.9" cy="57.26" rx="6.0646" ry="6.1957" className={className.pip}/>
+            <ellipse transform="matrix(.21001 .9777 -.95256 .30436 0 0)" cx="150.94" cy="-106.33" rx="6.0646" ry="6.1957" className={className.pip}/>
+        </svg>
+    ),
+
     garbage: className => (
         <svg
             className={className}

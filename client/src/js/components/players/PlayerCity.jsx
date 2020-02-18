@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import ClassesContext from "../../app/jss/ClassesContext";
 import Icon from "../../misc/Icon";
 import PropTypes from "prop-types";
+import {joinClassNames} from "dts-react-common";
 
 const propTypes = {
     player: PropTypes.object.isRequired,
@@ -16,7 +17,7 @@ const PlayerCity = ({player, whichCity, showDice, iconSide}) => {
     const city = player[`${whichCity}City`];
 
     return (
-        <div className={classes.player_city__container}>
+        <div className={joinClassNames(classes.player_city__container, iconSide === 'left' ? classes.player_city__container_left : undefined)}>
             <div className={classes.player_city__container__name}>
                 {city.name}
             </div>
@@ -25,7 +26,12 @@ const PlayerCity = ({player, whichCity, showDice, iconSide}) => {
             </div>
             {
                 showDice ?
-                    <div className={classes.player_city__container__dice}>Icon.dice</div> :
+                    <div>{
+                        Icon.dice({
+                            border: classes.player_city__container__dice__border,
+                            pip: classes.player_city__container__dice__pip,
+                        })
+                    }</div> :
                     undefined
             }
         </div>

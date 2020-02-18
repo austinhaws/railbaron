@@ -3,7 +3,7 @@ const appPadding = 4;
 export default {
     app__content: {
         fontFamily: '"Courier New", Courier, monospace',
-        maxWidth: '1000px',
+        maxWidth: '700px',
         minWidth: '630px',
         display: 'flex',
         flexDirection: 'column',

@@ -4,6 +4,7 @@ import Icon from "../../misc/Icon";
 import PlayerCity from "./PlayerCity";
 import PropTypes from "prop-types";
 import tinycolor from "tinycolor2";
+import PlayerPayout from "./PlayerPayout";
 
 const propTypes = {
     player: PropTypes.object.isRequired
@@ -15,10 +16,10 @@ const Player = ({player}) => {
 
     return (
         <div className={classes.player__container}>
-            <div>
+            <div className={classes.player__container__player}>
                 {Icon.garbage()}
                 {Icon.taw({style: {stroke: player.tawColor, fill: tinycolor(player.tawColor).lighten(10)}})}
-                <span>{player.name}</span>
+                <span className={classes.player__container__name}>{player.name}</span>
                 <PlayerCity
                     player={player}
                     whichCity="home"
@@ -26,7 +27,7 @@ const Player = ({player}) => {
                     iconSide="right"
                 />
             </div>
-            <div>
+            <div className={classes.player__container__cities}>
                 <PlayerCity
                     player={player}
                     whichCity="from"
@@ -34,7 +35,7 @@ const Player = ({player}) => {
                     iconSide="left"
                 />
 
-                {/*<PlayerPayout player={player}/>*/}
+                <PlayerPayout player={player}/>
 
                 <PlayerCity
                     player={player}
