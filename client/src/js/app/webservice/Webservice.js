@@ -30,7 +30,7 @@ export default {
 
         startNewGame: (numberPlayers = undefined) =>
             graphQLWebservice.mutation(startNewGameMutation(numberPlayers), webserviceAjaxIds.GAME.START_NEW_GAME)
-                .then(queryResults('startNameGame')),
+                .then(queryResults('startNewGame')),
     },
 
     payout: (city1Id, city2Id) =>

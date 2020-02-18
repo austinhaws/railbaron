@@ -19,7 +19,7 @@ const propTypes = {
 const defaultProps = {};
 
 const AppClass = observer(({history}) => {
-    const {appStore, historyStore} = useContext(MobContext);
+    const {appStore, gameStore, historyStore} = useContext(MobContext);
     const classes = useContext(ClassesContext);
 
     useEffect(() => {
@@ -29,11 +29,13 @@ const AppClass = observer(({history}) => {
         historyStore.history = history;
 
         const gamePhrase = LocalStorage.gamePhrase.get();
+        let gamePromise;
         if (gamePhrase) {
-            webservice.game.get('allod');
+            gamePromise = webservice.game.get('allod');
         } else {
-            webservice.game.startNewGame();
+            gamePromise = webservice.game.startNewGame();
         }
+        gamePromise.then(game => gameStore.game = game);
     }, []);
 
     return (

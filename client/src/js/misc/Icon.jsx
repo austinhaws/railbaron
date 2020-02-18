@@ -1,3 +1,56 @@
+import React from 'react';
+
 export default {
-	iconX: className => <svg viewBox="0 0 8.49 8.49" className={joinClassNames('svg-icon', 'svg-x', className)} role="presentation"><title>icon-x</title><rect x="-1.26" y="3.74" width="11" height="1" transform="translate(-1.76 4.24) rotate(-45)"/><rect x="3.74" y="-1.26" width="1" height="11" transform="translate(-1.76 4.24) rotate(-45)"/></svg>,
+    garbage: className => (
+        <svg
+            className={className}
+            viewBox="0 0 120 148"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g>
+                <path d="m9.7886 14.092 8.3155 133.05"/>
+                <path d="m111.46 14.092-8.3155 133.05"/>
+                <path d="m18.104 147.14h85.045"/>
+                <path d="m0.75496 13.941h118.68"/>
+                <path d="m32.996 20.819 8.3155 121.79"/>
+                <path d="m89.693 20.819-8.3155 121.79"/>
+                <path d="m61.269 20.91v121.32"/>
+                <path d="m0.75495 13.941 2.4353-13.04"/>
+                <path d="m119.32 13.906-2.4352-13.04"/>
+                <path d="m3.1902 0.90108h113.64"/>
+            </g>
+        </svg>
+    ),
+
+    pencil: className => (
+        <svg
+            className={className}
+            viewBox="0 0 210 260"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g>
+                <path d="m135.7 26.747-127.81 168.22"/>
+                <path d="m190.03 68.098-127.81 168.22"/>
+                <path d="m132.62 65.843-108.15 142.34"/>
+                <path d="m209.6 42.163-22.204 29.225"/>
+                <path d="m155.16 0.89788-19.635 25.843"/>
+                <path d="m152.45 80.676-107.92 142.04"/>
+                <path d="m170.08 94.243-54.362-41.303"/>
+                <path d="m176.41 86.294-54.208-41.186"/>
+                <path d="m183.2 77.401-54.557-41.451"/>
+                <path d="m189.87 68.555-54.162-41.151"/>
+                <path d="m62.215 236.32-61.349 23.962"/>
+                <path d="m209.52 42.21-54.362-41.311"/>
+                <path d="m7.8914 194.97-7.0255 65.31"/>
+                <path d="m62.215 236.32-54.362-41.303"/>
+            </g>
+        </svg>
+    ),
+
+    taw: ({className, style}) => (
+        <svg viewBox="0 0 133 198" className={className} style={style}>
+            <path
+                d="m80.45 14.364c0-7.3062-5.9228-13.229-13.229-13.229s-13.229 5.9228-13.229 13.229c0 5.1821 2.9797 9.6683 7.3551 11.777l-17.351 135.26c-41.88 0-42.394 27.48-42.394 27.48s0.5435 7.48 42.424 7.48h45.253c41.927 0 42.456-7.45 42.456-7.45s-0.529-27.45-42.388-27.155l-17.376-135.13c4.9615-1.8193 8.48-6.6287 8.48-12.26"/>
+        </svg>
+    ),
 }

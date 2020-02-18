@@ -2,22 +2,14 @@
 
 namespace RailBaron\Service;
 
-use RailBaron\Enum\Environment;
+use RailBaron\Enum\WordType;
 
 class WordService extends BaseService
 {
     public function getWords($numWords)
     {
-        $url = getenv(Environment::RANDOM_WORD_API_URL) .
-            '?key=' . getenv(Environment::RANDOM_WORD_API_KEY) .
-            '&number=' . $numWords .
-            '&swear=0';
-
-        $words = $this->context->services->curlService->curl($url);
-
-        if ($words === false) {
-            $words = '["NOT", "ONLINE", "' . rand() . '"]';
-        }
-        return join(' ', json_decode($words));
+        $verb = $this->context->daos->wordDao->randomWord(WordType::VERB);
+        $noun = $this->context->daos->wordDao->randomWord(WordType::NOUN);
+        return "$verb $noun";
     }
 }

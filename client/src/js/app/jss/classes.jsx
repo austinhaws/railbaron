@@ -2,6 +2,7 @@ import jss from 'jss'
 import preset from 'jss-preset-default'
 import AppStyles from "../../Components/app/AppStyles";
 import HeaderStyles from "../../components/header/HeaderStyles";
+import PlayersStyles from "../../components/players/PlayersStyles";
 
 jss.setup(preset());
 
@@ -15,6 +16,7 @@ const {classes} = jss.createStyleSheet({
 	},
 	...AppStyles,
 	...HeaderStyles,
+    ...PlayersStyles,
 }).attach();
 
 export default classes;

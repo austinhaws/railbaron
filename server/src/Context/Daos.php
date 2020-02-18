@@ -7,6 +7,7 @@ use RailBaron\DAO\GameDao;
 use RailBaron\DAO\PayoutDao;
 use RailBaron\DAO\PlayerDao;
 use RailBaron\DAO\RegionDao;
+use RailBaron\DAO\WordDao;
 
 class Daos
 {
@@ -16,8 +17,12 @@ class Daos
     public $gameDao;
     /** @var PayoutDao */
     public $payoutDao;
+    /** @var PlayerDao */
+    public $playerDao;
     /** @var RegionDao */
     public $regionDao;
+    /** @var WordDao */
+    public $wordDao;
 
     public function __construct(Context $context)
     {
@@ -26,5 +31,6 @@ class Daos
         $this->payoutDao = new PayoutDao($context);
         $this->playerDao = new PlayerDao($context);
         $this->regionDao = new RegionDao($context);
+        $this->wordDao = new WordDao($context);
     }
 }
