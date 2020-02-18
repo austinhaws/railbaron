@@ -5,6 +5,10 @@ export default () => `
     tawColor
     name
 
+    toCityId
+    fromCityId
+    homeCityId
+
     payout {
         payout
     }
