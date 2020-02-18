@@ -10,8 +10,8 @@ import {observer} from "mobx-react";
 import Pages, {renderPageRoutes} from "../../app/pages/Pages";
 import Header from "../header/Header";
 import ClassesContext from "../../app/jss/ClassesContext";
-import LocalStorage from "../../app/localstorage/LocalStorage";
 import webservice from "../../app/webservice/Webservice";
+import gamePhrase from "../../app/graphql/util/gamePhrase";
 
 const propTypes = {
     history: PropTypes.object.isRequired,
@@ -28,10 +28,9 @@ const AppClass = observer(({history}) => {
         }
         historyStore.history = history;
 
-        const gamePhrase = LocalStorage.gamePhrase.get();
         let gamePromise;
-        if (gamePhrase) {
-            gamePromise = webservice.game.get('allod');
+        if (gamePhrase()) {
+            gamePromise = webservice.game.get();
         } else {
             gamePromise = webservice.game.startNewGame();
         }

@@ -5,6 +5,7 @@ import PlayerCity from "./PlayerCity";
 import PropTypes from "prop-types";
 import tinycolor from "tinycolor2";
 import PlayerPayout from "./PlayerPayout";
+import rollPlayerHomeCity from "./function/rollPlayerHomeCity";
 
 const propTypes = {
     player: PropTypes.object.isRequired
@@ -23,15 +24,14 @@ const Player = ({player}) => {
                 <PlayerCity
                     player={player}
                     whichCity="home"
-                    showDice={true}
                     iconSide="right"
+                    onDicePress={() => rollPlayerHomeCity(player)}
                 />
             </div>
             <div className={classes.player__container__cities}>
                 <PlayerCity
                     player={player}
                     whichCity="from"
-                    showDice={false}
                     iconSide="left"
                 />
 
@@ -40,7 +40,6 @@ const Player = ({player}) => {
                 <PlayerCity
                     player={player}
                     whichCity="to"
-                    showDice={true}
                     iconSide="right"
                 />
             </div>

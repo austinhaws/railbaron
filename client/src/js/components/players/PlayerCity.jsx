@@ -3,16 +3,19 @@ import ClassesContext from "../../app/jss/ClassesContext";
 import Icon from "../../misc/Icon";
 import PropTypes from "prop-types";
 import {joinClassNames} from "dts-react-common";
+import {observer} from "mobx-react";
 
 const propTypes = {
     player: PropTypes.object.isRequired,
     whichCity: PropTypes.string.isRequired,
-    showDice: PropTypes.bool.isRequired,
+    onDicePress: PropTypes.func,
     iconSide: PropTypes.oneOf(['right', 'left']).isRequired,
 };
-const defaultProps = {};
+const defaultProps = {
+    onDicePress: undefined,
+};
 
-const PlayerCity = ({player, whichCity, showDice, iconSide}) => {
+const PlayerCity = observer(({player, whichCity, onDicePress, iconSide}) => {
     const classes = useContext(ClassesContext);
     const city = player[`${whichCity}City`];
 
@@ -25,8 +28,8 @@ const PlayerCity = ({player, whichCity, showDice, iconSide}) => {
                 {Icon.pencil()}
             </div>
             {
-                showDice ?
-                    <div>{
+                onDicePress ?
+                    <div onClick={onDicePress}>{
                         Icon.dice({
                             border: classes.player_city__container__dice__border,
                             pip: classes.player_city__container__dice__pip,
@@ -36,7 +39,7 @@ const PlayerCity = ({player, whichCity, showDice, iconSide}) => {
             }
         </div>
     );
-};
+});
 
 PlayerCity.propTypes = propTypes;
 PlayerCity.defaultProps = defaultProps;

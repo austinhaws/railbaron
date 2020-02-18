@@ -9,6 +9,7 @@ import randomRegionQuery from "../graphql/query/randomRegionQuery";
 import randomCityQuery from "../graphql/query/randomCityQuery";
 import playerDeleteMutation from "../graphql/mutation/playerDeleteMutation";
 import playerSaveMutation from "../graphql/mutation/playerSaveMutation";
+import storeGamePhrase from "../graphql/util/storeGamePhrase";
 
 const queryResults = field => data => data.data[field];
 
@@ -24,13 +25,15 @@ export default {
     },
 
     game: {
-        get: gamePhrase =>
-            graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
-                .then(queryResults('game')),
+        get: () =>
+            graphQLWebservice.query(gameQuery(), webserviceAjaxIds.GAME.GET)
+                .then(queryResults('game'))
+                .then(storeGamePhrase),
 
         startNewGame: (numberPlayers = undefined) =>
             graphQLWebservice.mutation(startNewGameMutation(numberPlayers), webserviceAjaxIds.GAME.START_NEW_GAME)
-                .then(queryResults('startNewGame')),
+                .then(queryResults('startNewGame'))
+                .then(storeGamePhrase),
     },
 
     payout: (city1Id, city2Id) =>
@@ -38,12 +41,12 @@ export default {
             .then(queryResults('payout')),
 
     player: {
-        delete: (playerId, gamePhrase) =>
-            graphQLWebservice.mutation(playerDeleteMutation(playerId, gamePhrase))
+        delete: playerId =>
+            graphQLWebservice.mutation(playerDeleteMutation(playerId))
                 .then(queryResults('deletePlayer')),
 
-        save: (player, gamePhrase) =>
-            graphQLWebservice.mutation(playerSaveMutation(player, gamePhrase))
+        save: player =>
+            graphQLWebservice.mutation(playerSaveMutation(player))
                 .then(queryResults('savePlayer')),
     },
 

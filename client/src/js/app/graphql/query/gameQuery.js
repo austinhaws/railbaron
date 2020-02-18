@@ -1,7 +1,8 @@
 import gameType from "../type/gameType";
+import gamePhrase from "../util/gamePhrase";
 
-export default gamePhrase => `
-    game(phrase: """${gamePhrase}""") {
+export default () => `
+    game(phrase: """${gamePhrase()}""") {
         ${gameType()}
     }
 `
