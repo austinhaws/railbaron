@@ -8,4 +8,6 @@ class Region extends BaseModel
     public $id;
     /** @var string */
     public $name;
+    /** @var string */
+    public $abbreviation;
 }

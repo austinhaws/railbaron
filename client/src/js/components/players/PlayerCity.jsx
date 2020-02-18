@@ -22,7 +22,7 @@ const PlayerCity = observer(({player, whichCity, onDicePress, iconSide}) => {
     return (
         <div className={joinClassNames(classes.player_city__container, iconSide === 'left' ? classes.player_city__container_left : undefined)}>
             <div className={classes.player_city__container__name}>
-                {city.name}
+                {city.region.abbreviation} {city.name}
             </div>
             <div className={classes.player_city__container__pencil}>
                 {Icon.pencil()}

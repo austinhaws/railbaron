@@ -16,6 +16,7 @@ class RegionType extends BaseType
                 return [
                     'id' => Type::id(),
                     'name' => Type::string(),
+                    'abbreviation' => Type::string(),
                     'cities' => [
                         'type' => Type::listOf($context->typeRegistry->cityType()),
                         'args' => [
