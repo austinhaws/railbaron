@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default {
+    arrow: className => (
+        <svg viewBox="0 0 43.5 24.5" className={className}>
+            <path d="m0 12.148h43.196"/>
+            <path d="m31.3 24.202 11.896-12.055-11.896-12.055"/>
+        </svg>
+    ),
+
     dice: className => (
         <svg viewBox="0 0 180 155" xmlns="http://www.w3.org/2000/svg">
             <path d="m1.4099 104.11 76.898 49.704 56.311-16.892 44.377-86.084-76.898-49.704-56.31 16.892z" className={className.border}/>

@@ -5,6 +5,10 @@ export default () => `
     tawColor
     name
 
+    payout {
+        payout
+    }
+
     homeCity {
         ${cityType()}
     }

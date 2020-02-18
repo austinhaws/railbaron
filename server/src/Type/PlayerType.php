@@ -21,6 +21,7 @@ class PlayerType extends BaseType
                     'homeCity' => $context->typeRegistry->cityType(),
                     'homeCityId' => Type::id(),
                     'name' => Type::string(),
+                    'payout' => $context->typeRegistry->payoutType(),
                     'tawColor' => Type::string(),
                     'toCity' => $context->typeRegistry->cityType(),
                     'toCityId' => Type::id(),
@@ -47,5 +48,10 @@ class PlayerType extends BaseType
     public function resolveHomeCity(Player $player)
     {
         return $this->context->daos->cityDao->cityForId($player->homeCityId);
+    }
+
+    public function resolvePayout(Player $player)
+    {
+        return $this->context->daos->payoutDao->payoutForCityIds($player->fromCityId, $player->toCityId);
     }
 }

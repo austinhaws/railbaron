@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import ClassesContext from "../../app/jss/ClassesContext";
 import PropTypes from "prop-types";
+import formatPayout from "./formatPayout";
+import Icon from "../../misc/Icon";
 
 const propTypes = {
     player: PropTypes.object.isRequired,
@@ -9,9 +11,10 @@ const defaultProps = {};
 
 const PlayerPayout = ({player}) => {
     const classes = useContext(ClassesContext);
-console.log({player});
     return (
         <div className={classes.payout__container}>
+            <div className={classes.payout__container__payout}>${formatPayout(player.payout.payout)}</div>
+            <div>{Icon.arrow(classes.payout__container__arrow)}</div>
         </div>
     );
 };

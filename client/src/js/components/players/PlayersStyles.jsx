@@ -20,9 +20,22 @@ export default {
         fontSize: '2.5em',
         flex: 1,
     },
+
     payout__container: {
         flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
+    payout__container__payout: {
+        marginBottom: '7px',
+        fontSize: '1.25em',
+    },
+    payout__container__arrow: {
+        stroke: 'black',
+        fill: 'none',
+    },
+
     player_city__container: {
         display: 'flex',
         alignItems: 'center',
@@ -33,6 +46,7 @@ export default {
     player_city__container_left: {
         flexDirection: 'row-reverse',
     },
+
     player__container__player: {
         display: 'flex',
         alignItems: 'center',
@@ -41,14 +55,23 @@ export default {
             margin: '0 4px',
         },
     },
+
     player__container__cities: {
         display: 'flex',
         '& svg': {
             width: '25px',
         },
+        '& > div:nth-child(1)': {
+            width: '40%',
+        },
+        '& > div:nth-child(3)': {
+            width: '40%',
+            textAlign: 'right',
+        },
     },
     player_city__container__name: {
-        fontSize: '2em',
+        fontSize: '1.5em',
+        flex: 1,
     },
     player_city__container__pencil: {
 
