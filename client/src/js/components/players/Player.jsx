@@ -7,6 +7,7 @@ import tinycolor from "tinycolor2";
 import PlayerPayout from "./PlayerPayout";
 import rollPlayerHomeCity from "./function/rollPlayerHomeCity";
 import rollPlayerDestination from "./function/rollPlayerDestination";
+import deletePlayer from "./function/deletePlayer";
 
 const propTypes = {
     player: PropTypes.object.isRequired
@@ -19,8 +20,8 @@ const Player = ({player}) => {
     return (
         <div className={classes.player__container}>
             <div className={classes.player__container__player}>
-                {Icon.garbage()}
-                {Icon.taw({style: {stroke: player.tawColor, fill: tinycolor(player.tawColor).lighten(10)}})}
+                <div onClick={() => deletePlayer(player)}>{Icon.garbage()}</div>
+                <div>{Icon.taw({style: {stroke: player.tawColor, fill: tinycolor(player.tawColor).lighten(10)}})}</div>
                 <span className={classes.player__container__name}>{player.name}</span>
                 <PlayerCity
                     player={player}
