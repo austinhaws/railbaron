@@ -1,4 +1,12 @@
 export default {
+    home: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    home__doily: {
+        textAlign: 'center',
+        marginBottom: '21px',
+    },
     home__button__container: {
         display: 'flex',
         flexDirection: 'column',
