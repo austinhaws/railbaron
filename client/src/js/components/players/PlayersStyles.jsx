@@ -20,6 +20,21 @@ export default {
         fontSize: '2.5em',
         flex: 1,
     },
+    player_container__home_city__show: {
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+    },
+    player_container__home_city__show__name: {
+    },
+    player_container__home_city__show__countdown: {
+        flex: 1,
+        textAlign: 'center',
+        marginRight: '11px',
+        border: '1px solid #525252',
+        borderRadius: '10px',
+        padding: '4px 8px 2px',
+    },
 
     payout__container: {
         flex: 1,
@@ -71,7 +86,7 @@ export default {
     },
     player_city__container__name: {
         fontSize: '1.5em',
-        flex: 1,
+        wrap: 'no-wrap',
     },
     player_city__container__pencil: {
 

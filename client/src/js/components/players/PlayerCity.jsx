@@ -4,29 +4,34 @@ import Icon from "../../misc/Icon";
 import PropTypes from "prop-types";
 import {joinClassNames} from "dts-react-common";
 import {observer} from "mobx-react";
+import PlayerCityNameHideable from "./PlayerCityNameHideable";
+import PlayerCityName from "./PlayerCityName";
 
 const propTypes = {
     player: PropTypes.object.isRequired,
     whichCity: PropTypes.string.isRequired,
     onDicePress: PropTypes.func,
     iconSide: PropTypes.oneOf(['right', 'left']).isRequired,
+    hideable: PropTypes.bool,
 };
 const defaultProps = {
     onDicePress: undefined,
+    hideable: false,
 };
 
-const PlayerCity = observer(({player, whichCity, onDicePress, iconSide}) => {
+const PlayerCity = observer(({hideable, player, whichCity, onDicePress, iconSide}) => {
     const classes = useContext(ClassesContext);
     const city = player[`${whichCity}City`];
 
     return (
         <div className={joinClassNames(classes.player_city__container, iconSide === 'left' ? classes.player_city__container_left : undefined)}>
-            <div className={classes.player_city__container__name}>
-                {city.region.abbreviation} {city.name}
-            </div>
+
+            {hideable ? <PlayerCityNameHideable city={city}/> : <PlayerCityName city={city}/>}
+
             <div className={classes.player_city__container__pencil}>
                 {Icon.pencil()}
             </div>
+
             {
                 onDicePress ?
                     <div onClick={onDicePress}>{

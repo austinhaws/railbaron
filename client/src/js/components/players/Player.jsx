@@ -28,6 +28,7 @@ const Player = ({player}) => {
                     whichCity="home"
                     iconSide="right"
                     onDicePress={() => rollPlayerHomeCity(player)}
+                    hideable={true}
                 />
             </div>
             <div className={classes.player__container__cities}>
