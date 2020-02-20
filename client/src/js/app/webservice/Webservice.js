@@ -25,10 +25,10 @@ export default {
     },
 
     game: {
-        get: () =>
-            graphQLWebservice.query(gameQuery(), webserviceAjaxIds.GAME.GET)
+        get: (gamePhrase, storeResult = true) =>
+            graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
                 .then(queryResults('game'))
-                .then(storeGamePhrase),
+                .then(game => storeResult ? storeGamePhrase(game) : game),
 
         startNewGame: (numberPlayers = undefined) =>
             graphQLWebservice.mutation(startNewGameMutation(numberPlayers), webserviceAjaxIds.GAME.START_NEW_GAME)
