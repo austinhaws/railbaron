@@ -27,6 +27,7 @@ export default {
         alignItems: 'center',
     },
     player_container__home_city__show__name: {
+        cursor: 'pointer',
     },
     player_container__home_city__show__countdown: {
         flex: 1,
