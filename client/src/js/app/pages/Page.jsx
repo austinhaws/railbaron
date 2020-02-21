@@ -16,7 +16,7 @@ export default class Page {
             const {appStore} = useContext(MobContext);
             appStore.pageTitle = `RPGGenerator - ${title}`;
 
-            return render ? render(Component, router) : <Component/>;
+            return render ? render(Component, router) : <Component {...router.match.params}/>;
         }
 	}
 }

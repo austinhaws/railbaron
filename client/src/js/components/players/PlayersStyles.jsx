@@ -17,6 +17,7 @@ export default {
         },
     },
     player__container__name: {
+        cursor: 'pointer',
         fontSize: '2.5em',
         flex: 1,
     },

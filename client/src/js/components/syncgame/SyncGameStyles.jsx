@@ -15,13 +15,7 @@ export default {
         marginBottom: '3px',
     },
     sync_game__input: {
-        '& input': {
-            height: '33px',
-            width: '100%',
-            fontSize: '1.75em',
-            padding: '3px 8px',
-            textAlign: 'center',
-        },
+        marginBottom: '17px',
     },
     sync_game__buttons: {
         display: 'flex',

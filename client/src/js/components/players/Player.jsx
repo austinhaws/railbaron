@@ -8,6 +8,7 @@ import PlayerPayout from "./PlayerPayout";
 import rollPlayerHomeCity from "./function/rollPlayerHomeCity";
 import rollPlayerDestination from "./function/rollPlayerDestination";
 import deletePlayer from "./function/deletePlayer";
+import Pages from "../../app/pages/Pages";
 
 const propTypes = {
     player: PropTypes.object.isRequired
@@ -22,7 +23,12 @@ const Player = ({player}) => {
             <div className={classes.player__container__player}>
                 <div onClick={() => deletePlayer(player)}>{Icon.garbage()}</div>
                 <div>{Icon.taw({style: {stroke: player.tawColor, fill: tinycolor(player.tawColor).lighten(10)}})}</div>
-                <span className={classes.player__container__name}>{player.name}</span>
+                <div
+                    className={classes.player__container__name}
+                    onClick={() => Pages.public.playerEdit.forward(player.id)}
+                >
+                    {player.name}
+                </div>
                 <PlayerCity
                     player={player}
                     whichCity="home"

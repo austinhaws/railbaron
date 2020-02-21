@@ -15,7 +15,20 @@ const {classes} = jss.createStyleSheet({
             margin: 0,
             padding: 0,
 		},
-	},
+        input: {
+            height: '33px',
+            width: 'calc(100% - 16px)',
+            fontSize: '1.75em',
+            padding: '3px 8px',
+            textAlign: 'center',
+        },
+        select: {
+            height: '45px',
+            width: '100%',
+            fontSize: '1.75em',
+            textAlignLast: 'center',
+        }
+    },
 	...AppStyles,
 	...HeaderStyles,
     ...HomeStyles,
