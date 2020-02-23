@@ -6,6 +6,7 @@ import {joinClassNames} from "dts-react-common";
 import {observer} from "mobx-react";
 import PlayerCityNameHideable from "./PlayerCityNameHideable";
 import PlayerCityName from "./PlayerCityName";
+import Pages from "../../app/pages/Pages";
 
 const propTypes = {
     player: PropTypes.object.isRequired,
@@ -28,7 +29,10 @@ const PlayerCity = observer(({hideable, player, whichCity, onDicePress, iconSide
 
             {hideable ? <PlayerCityNameHideable city={city}/> : <PlayerCityName city={city}/>}
 
-            <div className={classes.player_city__container__pencil}>
+            <div
+                className={classes.player_city__container__pencil}
+                onClick={() => Pages.public.cityEdit.forward(player.id, whichCity)}
+            >
                 {Icon.pencil()}
             </div>
 

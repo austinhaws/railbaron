@@ -4,6 +4,6 @@ export default () => `
     id
     name
     region {
-        ${regionType()}
+        ${regionType(false)}
     }
 `;

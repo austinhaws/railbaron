@@ -5,6 +5,7 @@ import HeaderStyles from "../../components/header/HeaderStyles";
 import PlayersStyles from "../../components/players/PlayersStyles";
 import HomeStyles from "../../components/home/HomeStyles";
 import SyncGameStyles from "../../components/syncgame/SyncGameStyles";
+import CityEditStyles from "../../components/cityedit/CityEditStyles";
 
 jss.setup(preset());
 
@@ -30,6 +31,7 @@ const {classes} = jss.createStyleSheet({
         }
     },
 	...AppStyles,
+    ...CityEditStyles,
 	...HeaderStyles,
     ...HomeStyles,
     ...PlayersStyles,

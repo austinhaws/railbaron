@@ -51,8 +51,8 @@ export default {
     },
 
     region: {
-        get: (regionId = undefined) =>
-            graphQLWebservice.query(regionQuery(regionId), webserviceAjaxIds.REGION.GET)
+        get: (regionId = undefined, includeCities = undefined) =>
+            graphQLWebservice.query(regionQuery(regionId, includeCities), webserviceAjaxIds.REGION.GET)
                 .then(queryResults('regions')),
 
         random: () =>

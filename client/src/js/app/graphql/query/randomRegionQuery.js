@@ -1,8 +1,8 @@
 import regionType from "../type/regionType";
 
-export default regionId => `
+export default () => `
   randomRegion {
-    ${regionType()}
+    ${regionType(false)}
   }
 `
 ;

@@ -5,14 +5,15 @@ import Page from "./Page";
 import {mobContextValue} from "../mobx/MobContext";
 import SyncGame from "../../components/syncgame/SyncGame";
 import PlayerEdit from "../../components/playeredit/PlayerEdit";
+import CityEdit from "../../components/cityedit/CityEdit";
 
 export default {
 	public: {
-        syncGame: new Page({
-            Component: SyncGame,
-            forward: () => mobContextValue.historyStore.history.push('/syncGame'),
-            path: '/syncGame',
-            title: 'Sync Game',
+        cityEdit: new Page({
+            Component: CityEdit,
+            forward: (playerId, cityType) => mobContextValue.historyStore.history.push(`/cityEdit/${playerId}/${cityType}`),
+            path: '/cityEdit/:playerId/:cityType',
+            title: 'City Edit',
         }),
         playerEdit: new Page({
             Component: PlayerEdit,
@@ -20,6 +21,14 @@ export default {
             path: '/playerEdit/:playerId',
             title: 'Player Edit',
         }),
+        syncGame: new Page({
+            Component: SyncGame,
+            forward: () => mobContextValue.historyStore.history.push('/syncGame'),
+            path: '/syncGame',
+            title: 'Sync Game',
+        }),
+
+
 		home: new Page({
 			Component: Home,
 			forward: () => mobContextValue.historyStore.history.push(`/`),
