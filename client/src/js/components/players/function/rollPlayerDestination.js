@@ -1,9 +1,10 @@
 import webservice from "../../../app/webservice/Webservice";
+import Pages from "../../../app/pages/Pages";
 
 export default player => {
     webservice.city.random().then(city => {
         if (city.region.id === player.toCity.region.id) {
-            console.error('rolled same region, need to open editor to pick region');
+            Pages.public.sameRegion.forward(player.id);
         } else {
             player.fromCityId = player.toCityId;
             player.fromCity = player.toCity;

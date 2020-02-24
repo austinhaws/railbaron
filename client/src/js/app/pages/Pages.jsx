@@ -6,6 +6,7 @@ import {mobContextValue} from "../mobx/MobContext";
 import SyncGame from "../../components/syncgame/SyncGame";
 import PlayerEdit from "../../components/playeredit/PlayerEdit";
 import CityEdit from "../../components/cityedit/CityEdit";
+import SameRegion from "../../components/sameregion/SameRegion";
 
 export default {
 	public: {
@@ -21,6 +22,12 @@ export default {
             path: '/playerEdit/:playerId',
             title: 'Player Edit',
         }),
+        sameRegion: new Page({
+            Component: SameRegion,
+            forward: playerId => mobContextValue.historyStore.history.push(`/sameRegion/${playerId}`),
+            path: '/sameRegion/:playerId',
+            title: 'Same Region',
+        }),
         syncGame: new Page({
             Component: SyncGame,
             forward: () => mobContextValue.historyStore.history.push('/syncGame'),
@@ -35,7 +42,7 @@ export default {
 			path: '/',
 			title: 'Rail Baron',
 		}),
-	},
+    },
 };
 
 export const renderPageRoutes = pages => Object.values(pages).map(page => (
