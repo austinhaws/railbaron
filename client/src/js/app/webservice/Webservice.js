@@ -25,7 +25,7 @@ export default {
     },
 
     game: {
-        get: (gamePhrase, storeResult = true) =>
+        get: (gamePhrase = undefined, storeResult = true) =>
             graphQLWebservice.query(gameQuery(gamePhrase), webserviceAjaxIds.GAME.GET)
                 .then(queryResults('game'))
                 .then(game => storeResult ? storeGamePhrase(game) : game),

@@ -1,5 +1,5 @@
 import "core-js/stable";
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter, Switch, withRouter} from 'react-router-dom';
 import PropTypes from "prop-types";
@@ -17,10 +17,12 @@ const propTypes = {
     history: PropTypes.object.isRequired,
 };
 const defaultProps = {};
+const REFRESH_SECONDS = 60 * 3;
 
 const AppClass = observer(({history}) => {
     const {appStore, historyStore} = useContext(MobContext);
     const classes = useContext(ClassesContext);
+    const intervalId = useRef(NaN);
 
     useEffect(() => {
         if (!history) {
@@ -33,6 +35,9 @@ const AppClass = observer(({history}) => {
         } else {
             webservice.game.startNewGame();
         }
+        intervalId.current = setInterval(() => webservice.game.get(), REFRESH_SECONDS * 1000);
+
+        return () => clearInterval(intervalId.current);
     }, []);
 
     return (
