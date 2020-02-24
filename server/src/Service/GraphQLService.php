@@ -23,7 +23,7 @@ class GraphQLService extends BaseService
         $data += [self::QUERY => null, 'variables' => null];
 
         if (null === $data[self::QUERY]) {
-            throw new \RuntimeException('No query specified');
+            exit('You can use a GraphQL client to connect to this end point like https://lucasconstantino.github.io/graphiql-online/');
         }
 
         $result = GraphQL::executeQuery(
