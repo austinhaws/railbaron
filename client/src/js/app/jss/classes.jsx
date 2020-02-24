@@ -1,11 +1,12 @@
-import jss from 'jss'
-import preset from 'jss-preset-default'
+import jss from 'jss';
+import preset from 'jss-preset-default';
 import AppStyles from "../../Components/app/AppStyles";
 import HeaderStyles from "../../components/header/HeaderStyles";
 import PlayersStyles from "../../components/players/PlayersStyles";
 import HomeStyles from "../../components/home/HomeStyles";
 import SyncGameStyles from "../../components/syncgame/SyncGameStyles";
 import CityEditStyles from "../../components/cityedit/CityEditStyles";
+import ReferencesStyles from "../../components/references/ReferencesStyles";
 
 jss.setup(preset());
 
@@ -35,6 +36,7 @@ const {classes} = jss.createStyleSheet({
 	...HeaderStyles,
     ...HomeStyles,
     ...PlayersStyles,
+    ...ReferencesStyles,
     ...SyncGameStyles,
 }).attach();
 

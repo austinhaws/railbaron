@@ -12,6 +12,7 @@ import Header from "../header/Header";
 import ClassesContext from "../../app/jss/ClassesContext";
 import webservice from "../../app/webservice/Webservice";
 import gamePhrase from "../../app/graphql/util/gamePhrase";
+import References from "../references/References";
 
 const propTypes = {
     history: PropTypes.object.isRequired,
@@ -54,6 +55,7 @@ const AppClass = observer(({history}) => {
                         {renderPageRoutes(Pages.public)}
                     </Switch>
                 </div>
+                <References/>
             </div>
         </div>
     );
