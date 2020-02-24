@@ -29,14 +29,15 @@ const SameRegion = observer(({playerId}) => {
         }
     }, [playerId, gameStore.game]);
 
-    const randomCity = regionId => webservice.city.random(regionId).then(setCity);
+    const randomCity = regionId => webservice.city.random(regionId)
+        .then(newCity => newCity.id === player.toCity.id ? randomCity(regionId) : setCity(newCity));
     const randomRegion = () => webservice.region.random().then(region => randomCity(region.id));
 
     return (
         <div>
             <div className={classes.sync_game__title}>Same Region Rolled!</div>
             <div className={classes.sync_game__blurb}>
-                You rolled the same region you are already in. Pick the region to which you would like to go.
+                You area already in the region you rolled! Pick the region to which you would like to go.
             </div>
 
             <div className={classes.sync_game__label}>
