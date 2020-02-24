@@ -56,6 +56,7 @@ export default {
     player_city__container: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'flex-end',
         '& > *': {
             margin: '0 4px',
         },
