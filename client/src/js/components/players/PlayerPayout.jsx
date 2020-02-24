@@ -14,7 +14,7 @@ const PlayerPayout = observer(({player}) => {
     const classes = useContext(ClassesContext);
     return (
         <div className={classes.payout__container}>
-            <div className={classes.payout__container__payout}>${formatPayout(player.payout.payout)}</div>
+            <div className={classes.payout__container__payout}>{player.payout && formatPayout(player.payout.payout)}</div>
             <div>{Icon.arrow(classes.payout__container__arrow)}</div>
         </div>
     );
