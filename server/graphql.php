@@ -14,7 +14,9 @@ header('Content-Type: application/json');
 
 
 
-require __DIR__ . '/vendor/autoload.php';
+// $appDir = __DIR__;
+$appDir = '/home/rpggener/apps/iloveaustin';
+require_once $appDir . '/vendor/autoload.php';
 
 use GraphQL\Error\Debug;
 use RailBaron\Context\Context;
