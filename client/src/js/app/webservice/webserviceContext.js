@@ -2,7 +2,7 @@ const CONTEXT_URL = {
 	LOCAL: 'http://localhost/railbaron/server/graphql.php',
 	DEV: 'https://???/graphql',
 	AT: 'https://???/graphql',
-	PROD: 'https://???/graphql',
+	PROD: 'https://rpggenerator.com/railbaronGQL/graphql.php',
 };
 
 export default (
