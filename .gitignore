@@ -3,7 +3,7 @@ vendor**
 .idea/
 dist/
 environments/
-.env
+.env*
 node_modules/
 *.DS_Store
 bundles**
